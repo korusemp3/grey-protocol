@@ -6,7 +6,7 @@ const DOSSIER_DATA = {
   threat: "CRITICAL",
   status: "ACTIVE",
 
-  image: "../assets/images/entities/ajax.jpg",
+  image: "/assets/images/entities/ajax.jpg",
 
   profile: [
     { label: "Роль", value: "Медтех / боевой оперативник" },
