@@ -19,6 +19,8 @@
   cursor:pointer;
   transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease, opacity .18s ease;
   backdrop-filter:blur(6px);
+  user-select:none;
+  -webkit-user-select:none;
 }
 
 .bf-card:hover{
