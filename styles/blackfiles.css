@@ -275,9 +275,8 @@ a{
 }
 
 .board{
-  position:relative;
-  min-height:760px;
-  padding:24px;
+  padding:40px 40px 80px;
+  min-height:1300px;
 }
 
 .connection-layer{
