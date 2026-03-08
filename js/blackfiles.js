@@ -112,10 +112,10 @@
   };
 
   const tierY = {
-    top: 6,
-    lieutenant: 34,
-    linked: 64
-  };
+  top: 6,
+  lieutenant: 38,
+  linked: 72
+};
 
   function spread(items, y) {
 
