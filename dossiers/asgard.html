@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Досье // Асгард</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../styles/dossier.css">
+</head>
+<body>
+  <main class="dossier-page">
+    <header class="dossier-topbar">
+      <div class="dossier-brand">
+        <div class="dossier-brand__title">BLACKFILES // DOSSIER</div>
+        <div class="dossier-brand__sub">restricted intelligence branch</div>
+      </div>
+
+      <a href="../blackfiles.html" class="dossier-back">← назад к карте</a>
+    </header>
+
+    <section class="dossier-shell">
+      <div class="dossier-head">
+        <div>
+          <div class="dossier-kicker">entity full file</div>
+          <h1 id="dossierTitle" class="dossier-title">Загрузка...</h1>
+          <div id="dossierRole" class="dossier-role">...</div>
+        </div>
+
+        <div id="dossierBadges" class="dossier-badges"></div>
+      </div>
+
+      <div class="dossier-layout">
+        <aside class="dossier-sidebar">
+          <div id="dossierPhoto" class="dossier-photo">?</div>
+
+          <section class="dossier-card">
+            <div class="dossier-card__title">профиль</div>
+            <div id="dossierProfile" class="dossier-kv"></div>
+          </section>
+
+          <section class="dossier-card">
+            <div class="dossier-card__title">метки</div>
+            <div id="dossierTags" class="dossier-tags"></div>
+          </section>
+        </aside>
+
+        <div class="dossier-main">
+          <section class="dossier-card">
+            <div class="dossier-card__title">краткая сводка</div>
+            <div id="dossierSummary" class="dossier-text"></div>
+          </section>
+
+          <section class="dossier-card">
+            <div class="dossier-card__title">инциденты / наблюдения</div>
+            <div id="dossierIncidents" class="dossier-stack"></div>
+          </section>
+
+          <section class="dossier-card">
+            <div class="dossier-card__title">заметки</div>
+            <div id="dossierNotes" class="dossier-text"></div>
+          </section>
+
+          <section class="dossier-card">
+            <div class="dossier-card__title">наблюдаемые связи</div>
+            <div id="dossierConnections" class="dossier-tags"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../data/dossiers/ajax.js"></script>
+  <script src="../js/dossier.js"></script>
+</body>
+</html>
