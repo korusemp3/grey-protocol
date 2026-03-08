@@ -62,7 +62,7 @@
     modalName.textContent = entity.name || "Unknown Subject";
     modalRole.textContent = entity.role || "Unknown Role";
     modalMeta.innerHTML = buildMeta(entity);
-    modalSummary.textContent = entity.summary || "No summary available.";
+    modalSummary.innerHTML = entity.summary || "No summary available.";
     modalConnections.textContent = entity.notes || getConnectionsText(entity.id);
     modalDossierLink.setAttribute("href", entity.dossier || "#");
 
