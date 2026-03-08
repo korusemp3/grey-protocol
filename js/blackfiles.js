@@ -196,13 +196,21 @@
       maxZoom: 1.6,
       wheelSensitivity: 0.18,
       layout: {
-  name: "breadthfirst",
-  directed: true,
-  roots: "#gregory",
-  spacingFactor: 1.35,
+  name: "concentric",
+  fit: true,
   padding: 80,
   animate: false,
-  avoidOverlap: true
+  avoidOverlap: true,
+  minNodeSpacing: 140,
+  concentric: function(node) {
+    const tier = node.data("tier");
+    if (tier === "top") return 3;
+    if (tier === "lieutenant") return 2;
+    return 1;
+  },
+  levelWidth: function() {
+    return 1;
+  }
 },
       style: [
         {
