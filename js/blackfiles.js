@@ -192,6 +192,9 @@
     const cy = cytoscape({
       container: graphEl,
       elements,
+      minZoom: 0.7,
+      maxZoom: 1.6,
+      wheelSensitivity: 0.18,
       layout: {
         name: "breadthfirst",
         directed: true,
@@ -203,23 +206,25 @@
       },
       style: [
         {
-          selector: "node",
-          style: {
-            "background-color": "data(bgColor)",
-            "label": "data(label)",
-            "color": "#e8f0ff",
-            "text-valign": "center",
-            "text-halign": "center",
-            "text-wrap": "wrap",
-            "text-max-width": "110px",
-            "font-size": 13,
-            "font-family": "Inter",
-            "width": "data(size)",
-            "height": "data(size)",
-            "border-width": 3,
-            "border-color": "data(borderColor)"
-          }
-        },
+  selector: "node",
+  style: {
+    "background-color": "data(bgColor)",
+    "label": "data(label)",
+    "color": "#e8f0ff",
+    "text-valign": "center",
+    "text-halign": "center",
+    "text-wrap": "wrap",
+    "text-max-width": "130px",
+    "font-size": 13,
+    "font-family": "Inter",
+    "shape": "round-rectangle",
+    "width": 150,
+    "height": 82,
+    "padding": "8px",
+    "border-width": 3,
+    "border-color": "data(borderColor)"
+  }
+},
         {
           selector: "edge",
           style: {
