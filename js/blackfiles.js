@@ -118,18 +118,27 @@
   };
 
   function spread(items, y) {
-    if (!items.length) return;
-    const start = 14;
-    const end = 86;
-    const step = items.length === 1 ? 0 : (end - start) / (items.length - 1);
 
-    items.forEach((item, index) => {
-      item.position = {
-        x: items.length === 1 ? 50 : start + step * index,
-        y
-      };
-    });
-  }
+  if (!items.length) return;
+
+  const containerWidth = 100;
+  const cardWidth = 14; // ширина карточки в процентах
+
+  const totalWidth = items.length * cardWidth;
+  const gap = (containerWidth - totalWidth) / (items.length + 1);
+
+  items.forEach((item, index) => {
+
+    const x = gap + index * (cardWidth + gap) + cardWidth / 2;
+
+    item.position = {
+      x,
+      y
+    };
+
+  });
+
+}
 
   spread(tiers.top, tierY.top);
   spread(tiers.lieutenant, tierY.lieutenant);
