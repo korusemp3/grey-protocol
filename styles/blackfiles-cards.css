@@ -202,8 +202,12 @@
 }
 
 .bf-card.threat-omega{
-  border-color:#ff2e9a;
-  box-shadow:0 0 0 1px rgba(255,46,154,.24), 0 12px 40px rgba(255,46,154,.18);
+  border-color:#1a0818;
+  background: radial-gradient(circle at 50% 30%, rgba(50,0,40,.25), rgba(5,2,6,.95));
+  box-shadow:
+    0 0 0 1px rgba(26,8,24,.9),
+    0 0 28px rgba(179,56,255,.12),
+    0 18px 50px rgba(0,0,0,.55);
 }
 
 /* threat badge colors */
@@ -219,4 +223,4 @@
 .bf-badge.threat-high{ border-color:#ff9f43; color:#ffd0a0; }
 .bf-badge.threat-critical{ border-color:#ff5d73; color:#ffb2bd; }
 .bf-badge.threat-apex{ border-color:#b388ff; color:#dbc7ff; }
-.bf-badge.threat-omega{ border-color:#ff2e9a; color:#ff9fd0; }
+.bf-badge.threat-omega{ border-color:#2a0f24; color:#f2b7da; }
