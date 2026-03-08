@@ -113,7 +113,7 @@
 
   const tierY = {
   top: 8,
-  lieutenant: 32,
+  lieutenant: 30,
   linked: 56
 };
 
