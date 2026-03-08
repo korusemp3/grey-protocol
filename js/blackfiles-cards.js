@@ -23,18 +23,20 @@
   }
 
   function getTierClass(tier) {
-    const normalized = (tier || "").toLowerCase();
-    if (normalized === "top") return "tier-top";
-    if (normalized === "lieutenant") return "tier-lieutenant";
-    return "tier-linked";
-  }
+  const normalized = (tier || "").toLowerCase();
+  if (normalized === "top") return "tier-top";
+  if (normalized === "lieutenant") return "tier-lieutenant";
+  if (normalized === "external") return "tier-external";
+  return "tier-linked";
+}
 
   function getTierLabel(tier) {
-    const normalized = (tier || "").toLowerCase();
-    if (normalized === "top") return "Top Cell";
-    if (normalized === "lieutenant") return "Lieutenant";
-    return "Linked Actor";
-  }
+  const normalized = (tier || "").toLowerCase();
+  if (normalized === "top") return "Top Cell";
+  if (normalized === "lieutenant") return "Lieutenant";
+  if (normalized === "external") return "External";
+  return "Linked Actor";
+}
 
   function buildCard(entity) {
   const card = document.createElement("article");
