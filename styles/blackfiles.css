@@ -296,7 +296,7 @@ a{
 
 .entity-node{
   position:absolute;
-  width:220px;
+  width:200px;
   border:1px solid var(--line);
   border-radius:18px;
   overflow:hidden;
@@ -312,7 +312,7 @@ a{
 }
 
 .entity-node.top{
-  width:300px;
+  width:260px;
 }
 
 .entity-photo{
