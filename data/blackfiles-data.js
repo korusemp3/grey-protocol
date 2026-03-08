@@ -7,7 +7,7 @@ const BLACKFILES_DATA = {
     tier: "top",
     status: "active",
     threat: "apex",
-    image: "ssets/images/entities/father-grigory.jpg",
+    image: "ssets/images/entities/grigory.jpg",
     summary: "Глава основной ветки Инквизиторов. Центральная фигура всей структуры.",
     notes: "От него расходятся все лейтенанты.",
     dossier: "#",
@@ -99,7 +99,7 @@ const BLACKFILES_DATA = {
   },
 
   {
-    id: "unknown-lawman",
+    id: "unknown-corporate",
     name: "Неизвестный",
     role: "Корпорат",
     tier: "linked",
