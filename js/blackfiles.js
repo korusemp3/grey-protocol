@@ -1,5 +1,5 @@
 (function () {
-  const data = window.BLACKFILES_DATA;
+  const data = BLACKFILES_DATA;
 
   if (!data || !Array.isArray(data.entities)) {
     console.error("BLACKFILES_DATA not found or invalid");
