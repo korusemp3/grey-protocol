@@ -352,3 +352,29 @@ a{
     gap:6px;
   }
 }
+
+.dossier-pill--unknown{
+  border-color:rgba(255,255,255,.10);
+  color:#9aa6c6;
+  background:rgba(255,255,255,.03);
+}
+
+.dossier-pill--restricted{
+  border-color:rgba(255,90,124,.20);
+  color:#ffb0c0;
+  background:rgba(255,90,124,.06);
+}
+
+.dossier-redact{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.03);
+  color:#9aa6c6;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-family:"JetBrains Mono", monospace;
+}
