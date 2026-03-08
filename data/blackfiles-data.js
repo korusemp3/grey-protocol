@@ -6,7 +6,7 @@ const BLACKFILES_DATA = {
     role: "Соло / Лидер",
     tier: "top",
     status: "active",
-    threat: "critical",
+    threat: "APEX",
     image: "",
     summary: "Глава основной ветки Инквизиторов. Центральная фигура всей структуры.",
     notes: "От него расходятся все лейтенанты.",
