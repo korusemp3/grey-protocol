@@ -88,24 +88,25 @@
   }
 
   function syncCardPositions() {
-    const cy = window.blackfilesCy;
-    if (!cy) return;
+  const cy = window.blackfilesCy;
+  if (!cy) return;
 
-    const graph = document.getElementById("graph");
-    const graphRect = graph.getBoundingClientRect();
+  const zoom = cy.zoom();
 
-    BLACKFILES_DATA.entities.forEach((entity) => {
-      const node = cy.getElementById(entity.id);
-      const card = layer.querySelector(`.bf-card[data-id="${entity.id}"]`);
+  BLACKFILES_DATA.entities.forEach((entity) => {
+    const node = cy.getElementById(entity.id);
+    const card = layer.querySelector(`.bf-card[data-id="${entity.id}"]`);
 
-      if (!node || !card) return;
+    if (!node || !card) return;
 
-      const pos = node.renderedPosition();
+    const pos = node.renderedPosition();
 
-      card.style.left = `${pos.x}px`;
-      card.style.top = `${pos.y}px`;
-    });
-  }
+    card.style.left = `${pos.x}px`;
+    card.style.top = `${pos.y}px`;
+    card.style.transform = `translate(-50%, -50%) scale(${zoom})`;
+    card.style.transformOrigin = "center center";
+  });
+}
 
   function applyHighlightState() {
     const cy = window.blackfilesCy;
