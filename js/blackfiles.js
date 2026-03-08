@@ -282,8 +282,20 @@ window.dispatchEvent(new CustomEvent("blackfiles:graph-ready"));
     updateHeaderInfo();
     animateTraceCode();
     initModal();
+    initLegendToggle();
     initGraph();
   }
 
+  function initLegendToggle() {
+  const toggle = document.getElementById("legendToggle");
+  const legend = document.getElementById("threatLegend");
+
+  if (!toggle || !legend) return;
+
+  toggle.addEventListener("click", () => {
+    legend.classList.toggle("is-collapsed");
+  });
+}
+  
   init();
 })();
