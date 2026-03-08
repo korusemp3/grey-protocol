@@ -165,20 +165,22 @@
     }
 
     const elements = [];
+    const presetPositions = getPresetPositions();
 
     data.entities.forEach((entity) => {
       elements.push({
-        data: {
-          id: entity.id,
-          label: entity.name,
-          role: entity.role || "Unknown Role",
-          threat: entity.threat || "low",
-          tier: entity.tier || "linked",
-          borderColor: getNodeBorder(entity),
-          bgColor: getNodeColor(entity),
-          size: getNodeSize(entity)
-        }
-      });
+  data: {
+    id: entity.id,
+    label: entity.name,
+    role: entity.role || "Unknown Role",
+    threat: entity.threat || "low",
+    tier: entity.tier || "linked",
+    borderColor: getNodeBorder(entity),
+    bgColor: getNodeColor(entity),
+    size: getNodeSize(entity)
+  },
+  position: presetPositions[entity.id]
+});
     });
 
     data.links.forEach((link) => {
@@ -199,14 +201,11 @@
       maxZoom: 1.6,
       wheelSensitivity: 0.18,
       layout: {
-        name: "breadthfirst",
-        directed: true,
-        roots: getLayoutRoots(),
-        padding: 140,
-        spacingFactor: 2.1,
-        animate: false,
-        avoidOverlap: true
-    },
+  name: "preset",
+  fit: true,
+  padding: 80,
+  animate: false
+},
       style: [
         {
   selector: "node",
@@ -280,6 +279,50 @@
     window.blackfilesCy = cy;
 window.dispatchEvent(new CustomEvent("blackfiles:graph-ready"));
   }
+  
+  function getPresetPositions() {
+  const positions = {};
+
+  const top = data.entities.filter((e) => e.tier === "top");
+  const lieutenants = data.entities.filter((e) => e.tier === "lieutenant");
+  const linked = data.entities.filter((e) => e.tier === "linked");
+  const external = data.entities.filter((e) => e.tier === "external");
+
+  function placeRow(items, y, startX, gap) {
+    items.forEach((item, index) => {
+      positions[item.id] = {
+        x: startX + index * gap,
+        y
+      };
+    });
+  }
+
+  // верх
+  if (top.length) {
+    top.forEach((item, index) => {
+      positions[item.id] = {
+        x: 700 + index * 220,
+        y: 180
+      };
+    });
+  }
+
+  // второй ряд
+  placeRow(lieutenants, 520, 260, 240);
+
+  // третий ряд
+  placeRow(linked, 860, 160, 220);
+
+  // внешние угрозы — отдельно сверху/сбоку
+  external.forEach((item, index) => {
+    positions[item.id] = {
+      x: 220 + index * 220,
+      y: 80
+    };
+  });
+
+  return positions;
+}
   
   function init() {
     updateHeaderInfo();
