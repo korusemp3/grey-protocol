@@ -38,7 +38,7 @@
 
   function buildCard(entity) {
   const card = document.createElement("article");
-  card.className = `bf-card ${getTierClass(entity.tier)}`;
+  card.className = `bf-card ${getTierClass(entity.tier)} threat-${entity.threat}`;
   card.dataset.id = entity.id;
 
   const threatClass = getThreatClass(entity.threat);
@@ -54,7 +54,7 @@
       ${photo}
       <div class="bf-card__badges">
         <span class="bf-badge ${threatClass}">${escapeHtml(tierLabel)}</span>
-        <span class="bf-badge ${threatClass}">${escapeHtml(threatLabel)}</span>
+        <span class="bf-badge threat-${entity.threat}">${escapeHtml(threatLabel)}</span>
       </div>
     </div>
 
