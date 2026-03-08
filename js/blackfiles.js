@@ -196,22 +196,14 @@
       maxZoom: 1.6,
       wheelSensitivity: 0.18,
       layout: {
-  name: "concentric",
-  fit: true,
-  padding: 80,
-  animate: false,
-  avoidOverlap: true,
-  minNodeSpacing: 140,
-  concentric: function(node) {
-    const tier = node.data("tier");
-    if (tier === "top") return 3;
-    if (tier === "lieutenant") return 2;
-    return 1;
-  },
-  levelWidth: function() {
-    return 1;
-  }
-},
+        name: "breadthfirst",
+        directed: true,
+        roots: getLayoutRoots(),
+        padding: 80,
+        spacingFactor: 1.35,
+        animate: false,
+        avoidOverlap: true
+    },
       style: [
         {
   selector: "node",
