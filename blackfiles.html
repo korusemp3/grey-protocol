@@ -79,37 +79,47 @@
           <div class="board panel">
             <div class="board-overlay">
               <button id="legendToggle" class="legend-toggle" type="button">
-                threat scale
+                 scale
               </button>
 
-              <div id="threatLegend" class="threat-legend is-collapsed">
-                <div class="threat-legend__title">threat scale</div>
+<div id="threatLegend" class="threat-legend is-collapsed">
+  <div class="threat-legend__title">threat scale</div>
 
-                <div class="threat-legend__item">
-                  <span class="threat-dot threat-dot-apex"></span>
-                  <span>APEX — центр сети / максимальная угроза</span>
-                </div>
+  <div class="threat-legend__item">
+    <span class="threat-dot" style="background:#7aa2ff;"></span>
+    <span>TRACE — замеченный агент</span>
+  </div>
 
-                <div class="threat-legend__item">
-                  <span class="threat-dot threat-dot-critical"></span>
-                  <span>CRITICAL — крайне опасный субъект</span>
-                </div>
+  <div class="threat-legend__item">
+    <span class="threat-dot" style="background:#4fd1c5;"></span>
+    <span>NODE — участник сети</span>
+  </div>
 
-                <div class="threat-legend__item">
-                  <span class="threat-dot threat-dot-high"></span>
-                  <span>HIGH — высокий боевой или оперативный риск</span>
-                </div>
+  <div class="threat-legend__item">
+    <span class="threat-dot" style="background:#ffd166;"></span>
+    <span>VECTOR — оперативный актив</span>
+  </div>
 
-                <div class="threat-legend__item">
-                  <span class="threat-dot threat-dot-medium"></span>
-                  <span>MEDIUM — активный и значимый участник</span>
-                </div>
+  <div class="threat-legend__item">
+    <span class="threat-dot" style="background:#ff9f43;"></span>
+    <span>HIGH — опасный игрок</span>
+  </div>
 
-                <div class="threat-legend__item">
-                  <span class="threat-dot threat-dot-low"></span>
-                  <span>LOW — ограниченная угроза / наблюдаемый элемент</span>
-                </div>
-              </div>
+  <div class="threat-legend__item">
+    <span class="threat-dot" style="background:#ff5d73;"></span>
+    <span>CRITICAL — стратегическая угроза</span>
+  </div>
+
+  <div class="threat-legend__item">
+    <span class="threat-dot" style="background:#b388ff;"></span>
+    <span>APEX — центр силы</span>
+  </div>
+
+  <div class="threat-legend__item">
+    <span class="threat-dot" style="background:#ff2e9a;"></span>
+    <span>OMEGA — экзистенциальная угроза</span>
+  </div>
+</div>
             </div>
 
             <div id="graph"></div>
