@@ -121,14 +121,14 @@
 
   if (!items.length) return;
 
-  const margin = 8;       // отступы по краям
+  const margin = 12;            // отступ от краёв
   const usable = 100 - margin * 2;
 
-  const step = usable / (items.length + 1);
+  const step = usable / items.length;
 
   items.forEach((item, i) => {
 
-    const x = margin + step * (i + 1);
+    const x = margin + step * (i + 0.5);
 
     item.position = {
       x,
