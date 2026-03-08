@@ -294,6 +294,12 @@ a{
   min-height:700px;
 }
 
+#graph{
+  width:100%;
+  height:1000px;
+  border-radius:18px;
+}
+
 .entity-node{
   position:absolute;
   width:200px;
