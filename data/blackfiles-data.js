@@ -79,8 +79,8 @@ const BLACKFILES_DATA = {
   },
 
   {
-    id: "Нексус",
-    name: "Неизвестный",
+    id: "nexus",
+    name: "Нексус",
     role: "Нетраннер",
     tier: "linked",
     status: "unknown",
@@ -149,7 +149,7 @@ const BLACKFILES_DATA = {
   { from: "father-grigory", to: "harlequin"}, 
   { from: "father-grigory", to: "yuri"},
   { from: "father-grigory", to: "1848"},
-  { from: "father-grigory", to: "unknown-netrunner"},
+  { from: "father-grigory", to: "nexus"},
   { from: "father-grigory", to: "unknown-technician" },
   { from: "father-grigory", to: "unknown-corporate" },
   { from: "father-grigory", to: "unknown-media" },
