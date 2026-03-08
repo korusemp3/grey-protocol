@@ -104,6 +104,38 @@
     return button;
   }
 
+  function layoutEntities() {
+  const tiers = {
+    top: data.entities.filter((e) => e.tier === "top"),
+    lieutenant: data.entities.filter((e) => e.tier === "lieutenant"),
+    linked: data.entities.filter((e) => e.tier === "linked")
+  };
+
+  const tierY = {
+    top: 6,
+    lieutenant: 34,
+    linked: 64
+  };
+
+  function spread(items, y) {
+    if (!items.length) return;
+    const start = 14;
+    const end = 86;
+    const step = items.length === 1 ? 0 : (end - start) / (items.length - 1);
+
+    items.forEach((item, index) => {
+      item.position = {
+        x: items.length === 1 ? 50 : start + step * index,
+        y
+      };
+    });
+  }
+
+  spread(tiers.top, tierY.top);
+  spread(tiers.lieutenant, tierY.lieutenant);
+  spread(tiers.linked, tierY.linked);
+}
+  
   function renderNodes() {
     nodeLayer.innerHTML = "";
     data.entities.forEach((entity) => {
