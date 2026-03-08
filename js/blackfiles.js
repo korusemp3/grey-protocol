@@ -199,8 +199,8 @@
         name: "breadthfirst",
         directed: true,
         roots: getLayoutRoots(),
-        padding: 80,
-        spacingFactor: 1.35,
+        padding: 140,
+        spacingFactor: 2.1,
         animate: false,
         avoidOverlap: true
     },
