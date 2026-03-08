@@ -141,6 +141,7 @@
 
     cy.on("render position pan zoom", updateAll);
     cy.on("tap", updateAll);
+    cy.on("dragfree", "node", updateAll);
     cy.on("layoutstop", updateAll);
 
     updateAll();
