@@ -284,10 +284,9 @@
         cy.elements().removeClass("dimmed highlighted");
       }
     });
-  }
-
-window.blackfilesCy = cy;
+    window.blackfilesCy = cy;
 window.dispatchEvent(new CustomEvent("blackfiles:graph-ready"));
+  }
   
   function init() {
     updateHeaderInfo();
