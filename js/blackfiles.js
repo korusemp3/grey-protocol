@@ -286,6 +286,9 @@
     });
   }
 
+window.blackfilesCy = cy;
+window.dispatchEvent(new CustomEvent("blackfiles:graph-ready"));
+  
   function init() {
     updateHeaderInfo();
     animateTraceCode();
