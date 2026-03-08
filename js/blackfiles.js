@@ -330,6 +330,7 @@
   }
 
   function init() {
+    layoutEntities();
     renderNodes();
     addDataIdsToNodes();
     updateHeaderInfo();
