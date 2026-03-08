@@ -196,14 +196,14 @@
       maxZoom: 1.6,
       wheelSensitivity: 0.18,
       layout: {
-        name: "breadthfirst",
-        directed: true,
-        roots: getLayoutRoots(),
-        padding: 60,
-        spacingFactor: 1.25,
-        animate: false,
-        avoidOverlap: true
-      },
+  name: "breadthfirst",
+  directed: true,
+  roots: "#gregory",
+  spacingFactor: 1.35,
+  padding: 80,
+  animate: false,
+  avoidOverlap: true
+},
       style: [
         {
   selector: "node",
