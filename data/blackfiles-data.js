@@ -71,7 +71,7 @@ const BLACKFILES_DATA = {
   },
 
   {
-    id: "unknown-fixer",
+    id: "unknown-technician",
     name: "Неизвестный",
     role: "Техник",
     tier: "linked",
@@ -144,15 +144,13 @@ const BLACKFILES_DATA = {
   links: [
   { from: "father-grigory", to: "ajax" },
   { from: "father-grigory", to: "asgard" },
+  { from: "father-grigory", to: "harlequin"}, 
+  { from: "father-grigory", to: "yuri"},
+  { from: "father-grigory", to: "1848"},
+  { from: "father-grigory", to: "unknown-netrunner"},
   { from: "father-grigory", to: "unknown-technician" },
   { from: "father-grigory", to: "unknown-corporate" },
-
-  { from: "ajax", to: "unknown-fixer" },
-  { from: "ajax", to: "unknown-netrunner" },
-
-  { from: "asgard", to: "unknown-lawman" },
-  { from: "asgard", to: "unknown-rockerboy" },
-  { from: "asgard", to: "unknown-media" }
+  { from: "father-grigory", to: "unknown-media" },
 ]
   
 };
