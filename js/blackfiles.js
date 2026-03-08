@@ -208,21 +208,11 @@
         {
   selector: "node",
   style: {
-    "background-color": "data(bgColor)",
-    "label": "data(label)",
-    "color": "#e8f0ff",
-    "text-valign": "center",
-    "text-halign": "center",
-    "text-wrap": "wrap",
-    "text-max-width": "130px",
-    "font-size": 13,
-    "font-family": "Inter",
-    "shape": "round-rectangle",
-    "width": 150,
-    "height": 82,
-    "padding": "8px",
-    "border-width": 3,
-    "border-color": "data(borderColor)"
+    "background-opacity": 0,
+    "border-opacity": 0,
+    "label": "",
+    "width": 1,
+    "height": 1
   }
 },
         {
