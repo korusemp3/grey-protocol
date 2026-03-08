@@ -6,8 +6,6 @@
     return;
   }
 
-  const nodeLayer = document.getElementById("nodeLayer");
-  const connectionLayer = document.getElementById("connectionLayer");
   const trackedCount = document.getElementById("trackedCount");
   const topNodeLabel = document.getElementById("topNodeLabel");
   const traceCode = document.getElementById("traceCode");
@@ -31,205 +29,6 @@
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#039;");
-  }
-
-  function getThreatClass(threat) {
-    const normalized = (threat || "").toLowerCase();
-    if (normalized === "critical" || normalized === "high") return "red";
-    if (normalized === "medium") return "yellow";
-    return "green";
-  }
-
-  function getTierLabel(tier) {
-    const normalized = (tier || "").toLowerCase();
-    if (normalized === "top") return "Top Cell";
-    if (normalized === "lieutenant") return "Lieutenant";
-    return "Linked Actor";
-  }
-
-  function getRoleLabel(role) {
-    return role || "Unknown Role";
-  }
-
-  function getFallbackImageMarkup(name) {
-    const initial = name ? name.trim().charAt(0).toUpperCase() : "?";
-    return `<div class="entity-photo">${escapeHtml(initial || "?")}</div>`;
-  }
-
-  function createEntityNode(entity) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = `entity-node ${entity.tier === "top" ? "top" : ""}`;
-    button.style.left = `${entity.position.x}%`;
-    button.style.top = `${entity.position.y}%`;
-    button.style.transform = "translate(-50%, 0)";
-
-    const threatClass = getThreatClass(entity.threat);
-    const tierLabel = getTierLabel(entity.tier);
-    const threatLabel = (entity.threat || "low").toUpperCase();
-
-    let photoMarkup = "";
-    if (entity.image) {
-      photoMarkup = `
-        <div class="entity-photo">
-          <img src="${escapeHtml(entity.image)}" alt="${escapeHtml(entity.name)}">
-          <div class="entity-badges">
-            <span class="badge ${threatClass}">${escapeHtml(tierLabel)}</span>
-            <span class="badge ${threatClass}">${escapeHtml(threatLabel)}</span>
-          </div>
-        </div>
-      `;
-    } else {
-      photoMarkup = `
-        <div class="entity-photo">
-          ${escapeHtml(entity.name ? entity.name.charAt(0).toUpperCase() : "?")}
-          <div class="entity-badges">
-            <span class="badge ${threatClass}">${escapeHtml(tierLabel)}</span>
-            <span class="badge ${threatClass}">${escapeHtml(threatLabel)}</span>
-          </div>
-        </div>
-      `;
-    }
-
-    button.innerHTML = `
-      ${photoMarkup}
-      <div class="entity-body">
-        <h4 class="entity-name">${escapeHtml(entity.name)}</h4>
-        <div class="entity-role">${escapeHtml(getRoleLabel(entity.role))}</div>
-        <div class="entity-summary">${escapeHtml(entity.summary || "No summary available.")}</div>
-      </div>
-    `;
-
-    button.addEventListener("click", () => openModal(entity));
-    return button;
-  }
-
-  function layoutEntities() {
-  const tiers = {
-    top: data.entities.filter((e) => e.tier === "top"),
-    lieutenant: data.entities.filter((e) => e.tier === "lieutenant"),
-    linked: data.entities.filter((e) => e.tier === "linked")
-  };
-
-  const tierY = {
-  top: 8,
-  lieutenant: 32,
-  linked: 68
-};
-
-  function spread(items, y) {
-
-  if (!items.length) return;
-
-  const margin = 10;
-  const usable = 100 - margin * 2;
-
-  const step = usable / (items.length + 1);
-
-  items.forEach((item, i) => {
-
-    const x = margin + step * (i + 1);
-
-    item.position = {
-      x,
-      y
-    };
-
-  });
-
-}
-
-  spread(tiers.top, tierY.top);
-  spread(tiers.lieutenant, tierY.lieutenant);
-  spread(tiers.linked, tierY.linked);
-}
-  
-  function renderNodes() {
-    nodeLayer.innerHTML = "";
-    data.entities.forEach((entity) => {
-      const node = createEntityNode(entity);
-      nodeLayer.appendChild(node);
-    });
-  }
-
-  function getNodeCenter(entity) {
-    const isTop = entity.tier === "top";
-    const width = isTop ? 320 : 260;
-    const height = 180 + 120;
-    const left = entity.position.x;
-    const top = entity.position.y;
-
-    const centerX = left;
-    const centerY = top + (height / 2 / 700) * 100;
-
-    return { x: centerX, y: centerY };
-  }
-
-  function drawConnections() {
-    if (!connectionLayer) return;
-
-    const board = document.querySelector(".board");
-    const boardRect = board.getBoundingClientRect();
-    const width = boardRect.width;
-    const height = boardRect.height;
-
-    connectionLayer.setAttribute("viewBox", `0 0 ${width} ${height}`);
-    connectionLayer.innerHTML = "";
-
-    data.links.forEach((link) => {
-      const fromEntity = entityMap.get(link.from);
-      const toEntity = entityMap.get(link.to);
-
-      if (!fromEntity || !toEntity) return;
-
-      const fromNode = nodeLayer.querySelector(`[data-id="${link.from}"]`);
-      const toNode = nodeLayer.querySelector(`[data-id="${link.to}"]`);
-
-      const fromEl = Array.from(nodeLayer.children).find((el) => {
-        const title = el.querySelector(".entity-name");
-        return title && title.textContent === fromEntity.name;
-      });
-
-      const toEl = Array.from(nodeLayer.children).find((el) => {
-        const title = el.querySelector(".entity-name");
-        return title && title.textContent === toEntity.name;
-      });
-
-      if (!fromEl || !toEl) return;
-
-      const fromRect = fromEl.getBoundingClientRect();
-      const toRect = toEl.getBoundingClientRect();
-
-      const startX = fromRect.left - boardRect.left + fromRect.width / 2;
-      const startY = fromRect.top - boardRect.top + fromRect.height;
-      const endX = toRect.left - boardRect.left + toRect.width / 2;
-      const endY = toRect.top - boardRect.top;
-
-      const midY = (startY + endY) / 2;
-
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      path.setAttribute(
-        "d",
-        `M ${startX} ${startY} C ${startX} ${midY}, ${endX} ${midY}, ${endX} ${endY}`
-      );
-      path.setAttribute("fill", "none");
-      path.setAttribute("stroke", "rgba(255,90,124,.28)");
-      path.setAttribute("stroke-width", "2");
-
-      connectionLayer.appendChild(path);
-
-      if (link.label) {
-        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        text.setAttribute("x", String((startX + endX) / 2));
-        text.setAttribute("y", String(midY - 6));
-        text.setAttribute("text-anchor", "middle");
-        text.setAttribute("fill", "rgba(255,190,205,.88)");
-        text.setAttribute("font-size", "11");
-        text.setAttribute("font-family", "JetBrains Mono, monospace");
-        text.textContent = link.label;
-        connectionLayer.appendChild(text);
-      }
-    });
   }
 
   function buildMeta(entity) {
@@ -296,6 +95,7 @@
 
   function animateTraceCode() {
     if (!traceCode) return;
+
     const chars = "ABCDEF0123456789";
 
     function makeCode() {
@@ -309,16 +109,6 @@
     setInterval(() => {
       traceCode.textContent = makeCode();
     }, 1600);
-  }
-
-  function addDataIdsToNodes() {
-    const nodes = nodeLayer.querySelectorAll(".entity-node");
-    nodes.forEach((node, index) => {
-      const entity = data.entities[index];
-      if (entity) {
-        node.dataset.id = entity.id;
-      }
-    });
   }
 
   function initModal() {
@@ -337,19 +127,165 @@
     });
   }
 
+  function getNodeColor(entity) {
+    if (entity.tier === "top") return "#151b2b";
+    if (entity.tier === "lieutenant") return "#10182a";
+    return "#0d1422";
+  }
+
+  function getNodeBorder(entity) {
+    if (entity.tier === "top") return "#ff5a7c";
+    if (entity.tier === "lieutenant") return "#ff9a6b";
+    return "#63a8ff";
+  }
+
+  function getNodeSize(entity) {
+    if (entity.tier === "top") return 130;
+    if (entity.tier === "lieutenant") return 105;
+    return 90;
+  }
+
+  function getLayoutRoots() {
+    const topIds = data.entities
+      .filter((entity) => entity.tier === "top")
+      .map((entity) => entity.id);
+
+    return topIds.length ? topIds : undefined;
+  }
+
+  function initGraph() {
+    const graphEl = document.getElementById("graph");
+
+    if (!graphEl) {
+      console.error("#graph container not found");
+      return;
+    }
+
+    const elements = [];
+
+    data.entities.forEach((entity) => {
+      elements.push({
+        data: {
+          id: entity.id,
+          label: entity.name,
+          role: entity.role || "Unknown Role",
+          threat: entity.threat || "low",
+          tier: entity.tier || "linked",
+          borderColor: getNodeBorder(entity),
+          bgColor: getNodeColor(entity),
+          size: getNodeSize(entity)
+        }
+      });
+    });
+
+    data.links.forEach((link) => {
+      elements.push({
+        data: {
+          id: `${link.from}_${link.to}`,
+          source: link.from,
+          target: link.to,
+          label: link.label || ""
+        }
+      });
+    });
+
+    const cy = cytoscape({
+      container: graphEl,
+      elements,
+      layout: {
+        name: "breadthfirst",
+        directed: true,
+        roots: getLayoutRoots(),
+        padding: 60,
+        spacingFactor: 1.25,
+        animate: false,
+        avoidOverlap: true
+      },
+      style: [
+        {
+          selector: "node",
+          style: {
+            "background-color": "data(bgColor)",
+            "label": "data(label)",
+            "color": "#e8f0ff",
+            "text-valign": "center",
+            "text-halign": "center",
+            "text-wrap": "wrap",
+            "text-max-width": "110px",
+            "font-size": 13,
+            "font-family": "Inter",
+            "width": "data(size)",
+            "height": "data(size)",
+            "border-width": 3,
+            "border-color": "data(borderColor)"
+          }
+        },
+        {
+          selector: "edge",
+          style: {
+            "curve-style": "bezier",
+            "width": 2,
+            "line-color": "rgba(255,90,124,0.55)",
+            "target-arrow-color": "rgba(255,90,124,0.75)",
+            "target-arrow-shape": "triangle"
+          }
+        },
+        {
+          selector: 'edge[label != ""]',
+          style: {
+            "label": "data(label)",
+            "font-size": 10,
+            "color": "#ffd6df",
+            "text-background-color": "#0b1018",
+            "text-background-opacity": 0.85,
+            "text-background-padding": "3px"
+          }
+        },
+        {
+          selector: ".dimmed",
+          style: {
+            "opacity": 0.2
+          }
+        },
+        {
+          selector: ".highlighted",
+          style: {
+            "opacity": 1,
+            "line-color": "#ff5a7c",
+            "target-arrow-color": "#ff5a7c",
+            "width": 3
+          }
+        }
+      ]
+    });
+
+    cy.on("tap", "node", (evt) => {
+      const node = evt.target;
+      const id = node.id();
+      const entity = entityMap.get(id);
+
+      cy.elements().removeClass("dimmed highlighted");
+      cy.elements().addClass("dimmed");
+
+      node.removeClass("dimmed").addClass("highlighted");
+      node.connectedEdges().removeClass("dimmed").addClass("highlighted");
+      node.neighborhood().removeClass("dimmed").addClass("highlighted");
+
+      if (entity) openModal(entity);
+    });
+
+    cy.on("tap", (evt) => {
+      if (evt.target === cy) {
+        cy.elements().removeClass("dimmed highlighted");
+      }
+    });
+  }
+
   function init() {
-    layoutEntities();
-    renderNodes();
-    addDataIdsToNodes();
     updateHeaderInfo();
     animateTraceCode();
     initModal();
-
-    requestAnimationFrame(() => {
-      drawConnections();
-    });
-
-    window.addEventListener("resize", drawConnections);
+    initGraph();
   }
 
   init();
