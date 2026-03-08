@@ -662,18 +662,60 @@ a{
   }
 }
 
-.threat-legend{
+.board{
+  position:relative;
+}
+
+.board-overlay{
   position:absolute;
-  top:18px;
-  left:18px;
-  z-index:30;
+  top:16px;
+  right:16px;
+  z-index:15;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:10px;
+  pointer-events:none;
+}
+
+.legend-toggle,
+.threat-legend{
+  pointer-events:auto;
+}
+
+.legend-toggle{
+  padding:10px 14px;
+  border:1px solid rgba(108,140,255,.18);
+  border-radius:12px;
+  background:rgba(7,11,18,.84);
+  color:#d9e2ff;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-family:"JetBrains Mono", monospace;
+  cursor:pointer;
+  backdrop-filter:blur(8px);
+}
+
+.threat-legend{
   width:300px;
   padding:14px 16px;
   border:1px solid rgba(108,140,255,.16);
   border-radius:16px;
-  background:rgba(7,11,18,.82);
-  backdrop-filter:blur(8px);
+  background:rgba(7,11,18,.86);
+  backdrop-filter:blur(10px);
   box-shadow:0 10px 30px rgba(0,0,0,.28);
+  transition:opacity .18s ease, transform .18s ease, max-height .2s ease, padding .2s ease;
+  overflow:hidden;
+}
+
+.threat-legend.is-collapsed{
+  opacity:0;
+  transform:translateY(-6px);
+  max-height:0;
+  padding-top:0;
+  padding-bottom:0;
+  border-width:0;
 }
 
 .threat-legend__title{
@@ -687,7 +729,7 @@ a{
 
 .threat-legend__item{
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   gap:10px;
   margin-bottom:8px;
   color:#d8e2ff;
@@ -704,6 +746,7 @@ a{
   height:10px;
   border-radius:50%;
   flex:0 0 auto;
+  margin-top:4px;
 }
 
 .threat-dot-low{ background:#5fa8ff; }
