@@ -112,24 +112,23 @@
   };
 
   const tierY = {
-  top: 6,
-  lieutenant: 38,
-  linked: 72
+  top: 8,
+  lieutenant: 32,
+  linked: 56
 };
 
   function spread(items, y) {
 
   if (!items.length) return;
 
-  const containerWidth = 100;
-  const cardWidth = 14; // ширина карточки в процентах
+  const margin = 8;       // отступы по краям
+  const usable = 100 - margin * 2;
 
-  const totalWidth = items.length * cardWidth;
-  const gap = (containerWidth - totalWidth) / (items.length + 1);
+  const step = usable / (items.length + 1);
 
-  items.forEach((item, index) => {
+  items.forEach((item, i) => {
 
-    const x = gap + index * (cardWidth + gap) + cardWidth / 2;
+    const x = margin + step * (i + 1);
 
     item.position = {
       x,
