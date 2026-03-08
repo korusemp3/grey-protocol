@@ -36,7 +36,7 @@ const BLACKFILES_DATA = {
     image: "assets/images/entities/asgard.jpg",
     summary: "Лейтенант ветки, завязанный на логистику и мобильные каналы.",
     notes: "Подчинён О. Григорию.",
-    dossier: "#",
+    dossier: "dossiers/asgard.html",
   },
 
   {
