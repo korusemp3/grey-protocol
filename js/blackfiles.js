@@ -130,18 +130,21 @@
   function getNodeColor(entity) {
     if (entity.tier === "top") return "#151b2b";
     if (entity.tier === "lieutenant") return "#10182a";
+    if (entity.tier === "external") return "#1a1020";
     return "#0d1422";
   }
 
   function getNodeBorder(entity) {
     if (entity.tier === "top") return "#ff5a7c";
     if (entity.tier === "lieutenant") return "#ff9a6b";
+    if (entity.tier === "external") return "#b388ff";
     return "#63a8ff";
   }
 
   function getNodeSize(entity) {
     if (entity.tier === "top") return 130;
     if (entity.tier === "lieutenant") return 105;
+    if (entity.tier === "external") return 100;
     return 90;
   }
 
