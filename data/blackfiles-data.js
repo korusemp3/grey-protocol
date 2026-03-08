@@ -128,18 +128,6 @@ const BLACKFILES_DATA = {
     summary: "Связанный элемент. Профиль пока неполный.",
     notes: "Роль: Медиа.",
     dossier: "#",
-  },
-   
-  {
-    id: "cyberplague",
-    name: "Киберчума",
-    role: "Аномалия",
-    tier: "external",
-    threat: "omega",
-    image: "assets/images/entities/cyberplague.jpg",
-    summary: "Н неконтролируемая катастрофическая сущность, уничтожившая регион.",
-    notes: "Не относится напрямую к основной ветке инквизиторов.",
-    dossier: "#"
   }
 ],
   
