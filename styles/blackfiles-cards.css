@@ -171,29 +171,39 @@
 /* THREAT LEVEL SYSTEM */
 /* ========================= */
 
-.bf-card.threat-low{
-  border-color:#5fa8ff;
-  box-shadow:0 0 0 1px rgba(95,168,255,.15), 0 10px 30px rgba(95,168,255,.08);
+.bf-card.threat-trace{
+  border-color:#7aa2ff;
+  box-shadow:0 0 0 1px rgba(122,162,255,.14), 0 10px 30px rgba(122,162,255,.08);
 }
 
-.bf-card.threat-medium{
+.bf-card.threat-node{
+  border-color:#4fd1c5;
+  box-shadow:0 0 0 1px rgba(79,209,197,.14), 0 10px 30px rgba(79,209,197,.08);
+}
+
+.bf-card.threat-vector{
   border-color:#ffd166;
   box-shadow:0 0 0 1px rgba(255,209,102,.15), 0 10px 30px rgba(255,209,102,.08);
 }
 
 .bf-card.threat-high{
-  border-color:#ff9c54;
-  box-shadow:0 0 0 1px rgba(255,156,84,.18), 0 10px 32px rgba(255,156,84,.10);
+  border-color:#ff9f43;
+  box-shadow:0 0 0 1px rgba(255,159,67,.18), 0 10px 32px rgba(255,159,67,.10);
 }
 
 .bf-card.threat-critical{
-  border-color:#ff4d6d;
-  box-shadow:0 0 0 1px rgba(255,77,109,.20), 0 12px 34px rgba(255,77,109,.14);
+  border-color:#ff5d73;
+  box-shadow:0 0 0 1px rgba(255,93,115,.20), 0 12px 34px rgba(255,93,115,.14);
 }
 
 .bf-card.threat-apex{
-  border-color:#c77dff;
-  box-shadow:0 0 0 1px rgba(199,125,255,.22), 0 12px 36px rgba(199,125,255,.16);
+  border-color:#b388ff;
+  box-shadow:0 0 0 1px rgba(179,136,255,.22), 0 12px 36px rgba(179,136,255,.16);
+}
+
+.bf-card.threat-omega{
+  border-color:#ff2e9a;
+  box-shadow:0 0 0 1px rgba(255,46,154,.24), 0 12px 40px rgba(255,46,154,.18);
 }
 
 /* threat badge colors */
@@ -203,22 +213,10 @@
   color:#a9d1ff;
 }
 
-.bf-badge.threat-medium{
-  border-color:#ffd166;
-  color:#ffe3a6;
-}
-
-.bf-badge.threat-high{
-  border-color:#ff9c54;
-  color:#ffc59a;
-}
-
-.bf-badge.threat-critical{
-  border-color:#ff4d6d;
-  color:#ff9db0;
-}
-
-.bf-badge.threat-apex{
-  border-color:#c77dff;
-  color:#e2b9ff;
-}
+.bf-badge.threat-trace{ border-color:#7aa2ff; color:#b9d0ff; }
+.bf-badge.threat-node{ border-color:#4fd1c5; color:#a6f4ec; }
+.bf-badge.threat-vector{ border-color:#ffd166; color:#ffe6a6; }
+.bf-badge.threat-high{ border-color:#ff9f43; color:#ffd0a0; }
+.bf-badge.threat-critical{ border-color:#ff5d73; color:#ffb2bd; }
+.bf-badge.threat-apex{ border-color:#b388ff; color:#dbc7ff; }
+.bf-badge.threat-omega{ border-color:#ff2e9a; color:#ff9fd0; }
