@@ -113,22 +113,22 @@
 
   const tierY = {
   top: 8,
-  lieutenant: 30,
-  linked: 56
+  lieutenant: 32,
+  linked: 68
 };
 
   function spread(items, y) {
 
   if (!items.length) return;
 
-  const margin = 12;            // отступ от краёв
+  const margin = 10;
   const usable = 100 - margin * 2;
 
-  const step = usable / items.length;
+  const step = usable / (items.length + 1);
 
   items.forEach((item, i) => {
 
-    const x = margin + step * (i + 0.5);
+    const x = margin + step * (i + 1);
 
     item.position = {
       x,
