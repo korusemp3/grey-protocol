@@ -37,46 +37,88 @@
   }
 
   function buildCard(entity) {
-    const card = document.createElement("article");
-    card.className = `bf-card ${getTierClass(entity.tier)}`;
-    card.dataset.id = entity.id;
+  const card = document.createElement("article");
+  card.className = `bf-card ${getTierClass(entity.tier)}`;
+  card.dataset.id = entity.id;
 
-    const threatClass = getThreatClass(entity.threat);
-    const threatLabel = (entity.threat || "low").toUpperCase();
-    const tierLabel = getTierLabel(entity.tier);
+  const threatClass = getThreatClass(entity.threat);
+  const threatLabel = (entity.threat || "low").toUpperCase();
+  const tierLabel = getTierLabel(entity.tier);
 
-    const photo = entity.image
-      ? `<img src="${escapeHtml(entity.image)}" alt="${escapeHtml(entity.name)}">`
-      : `${escapeHtml(entity.name ? entity.name.charAt(0).toUpperCase() : "?")}`;
+  const photo = entity.image
+    ? `<img src="${escapeHtml(entity.image)}" alt="${escapeHtml(entity.name)}">`
+    : `${escapeHtml(entity.name ? entity.name.charAt(0).toUpperCase() : "?")}`;
 
-    card.innerHTML = `
-      <div class="bf-card__photo">
-        ${photo}
-        <div class="bf-card__badges">
-          <span class="bf-badge ${threatClass}">${escapeHtml(tierLabel)}</span>
-          <span class="bf-badge ${threatClass}">${escapeHtml(threatLabel)}</span>
-        </div>
+  card.innerHTML = `
+    <div class="bf-card__photo">
+      ${photo}
+      <div class="bf-card__badges">
+        <span class="bf-badge ${threatClass}">${escapeHtml(tierLabel)}</span>
+        <span class="bf-badge ${threatClass}">${escapeHtml(threatLabel)}</span>
       </div>
+    </div>
 
-      <div class="bf-card__body">
-        <h4 class="bf-card__name">${escapeHtml(entity.name || "Unknown Subject")}</h4>
-        <div class="bf-card__role">${escapeHtml(entity.role || "Unknown Role")}</div>
-        <div class="bf-card__summary">${escapeHtml(entity.summary || "No summary available.")}</div>
-      </div>
-    `;
+    <div class="bf-card__body">
+      <h4 class="bf-card__name">${escapeHtml(entity.name || "Unknown Subject")}</h4>
+      <div class="bf-card__role">${escapeHtml(entity.role || "Unknown Role")}</div>
+      <div class="bf-card__summary">${escapeHtml(entity.summary || "No summary available.")}</div>
+    </div>
+  `;
 
-    card.addEventListener("click", () => {
-      const cy = window.blackfilesCy;
-      if (!cy) return;
+  let isDragging = false;
+  let dragStarted = false;
 
-      const node = cy.getElementById(entity.id);
-      if (node) {
+  card.addEventListener("mousedown", (event) => {
+    const cy = window.blackfilesCy;
+    if (!cy) return;
+
+    const node = cy.getElementById(entity.id);
+    if (!node) return;
+
+    isDragging = true;
+    dragStarted = false;
+
+    const graph = document.getElementById("graph");
+    const graphRect = graph.getBoundingClientRect();
+
+    function moveAt(e) {
+      const x = e.clientX - graphRect.left;
+      const y = e.clientY - graphRect.top;
+
+      const pan = cy.pan();
+      const zoom = cy.zoom();
+
+      const modelX = (x - pan.x) / zoom;
+      const modelY = (y - pan.y) / zoom;
+
+      node.position({ x: modelX, y: modelY });
+      dragStarted = true;
+    }
+
+    function onMouseMove(e) {
+      if (!isDragging) return;
+      moveAt(e);
+    }
+
+    function onMouseUp() {
+      document.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseup", onMouseUp);
+
+      isDragging = false;
+
+      if (!dragStarted) {
         node.emit("tap");
       }
-    });
+    }
 
-    return card;
-  }
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseup", onMouseUp);
+
+    event.preventDefault();
+  });
+
+  return card;
+}
 
   function renderCards() {
     layer.innerHTML = "";
