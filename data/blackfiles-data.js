@@ -148,7 +148,7 @@ const BLACKFILES_DATA = {
     role: "Аномалия",
     tier: "external",
     threat: "vector",
-    image: "",
+    image: "assets/images/ally/cartel.jpg",
     summary: "111",
     notes: "Не относится напрямую к основной ветке инквизиторов.",
     dossier: "#"
