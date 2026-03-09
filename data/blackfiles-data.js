@@ -66,8 +66,8 @@ const BLACKFILES_DATA = {
   },
 
   {
-    id: "unknown-technician",
-    name: "Неизвестный",
+    id: "kuklovod",
+    name: "Кукловод",
     role: "Техник",
     tier: "linked",
     status: "unknown",
@@ -92,8 +92,8 @@ const BLACKFILES_DATA = {
   },
 
   {
-    id: "unknown-corporate",
-    name: "Неизвестный",
+    id: "alma",
+    name: "Альма???",
     role: "Корпорат",
     tier: "linked",
     status: "unknown",
@@ -118,8 +118,8 @@ const BLACKFILES_DATA = {
   },
 
   {
-    id: "unknown-media",
-    name: "Неизвестный",
+    id: "morfey",
+    name: "Морфей",
     role: "Медиа",
     tier: "linked",
     status: "unknown",
@@ -140,7 +140,20 @@ const BLACKFILES_DATA = {
     summary: "Н неконтролируемая катастрофическая сущность, уничтожившая регион.",
     notes: "Не относится напрямую к основной ветке инквизиторов.",
     dossier: "#"
+  },
+
+    {
+    id: "mexican",
+    name: "Банда Мексиканцев",
+    role: "Аномалия",
+    tier: "external",
+    threat: "vector",
+    image: "",
+    summary: "111",
+    notes: "Не относится напрямую к основной ветке инквизиторов.",
+    dossier: "#"
   }
+
 ],
   
   links: [
@@ -150,11 +163,11 @@ const BLACKFILES_DATA = {
   { from: "father-grigory", to: "yuri"},
   { from: "father-grigory", to: "1848"},
   { from: "father-grigory", to: "nexus"},
-  { from: "father-grigory", to: "unknown-technician" },
-  { from: "father-grigory", to: "unknown-corporate" },
-  { from: "father-grigory", to: "unknown-media" },
-  { from: "father-grigory", to: "cyberplague" },
+  { from: "father-grigory", to: "kuklovod" },
+  { from: "father-grigory", to: "alma" },
+  { from: "father-grigory", to: "morfey" },
   { from: "nexus", to: "cyberplague" },
+  { from: "mexican", to: "1848" },
 ]
   
 };
