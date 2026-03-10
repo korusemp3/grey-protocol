@@ -182,23 +182,51 @@ const BLACKFILES_DATA = {
     image: "assets/images/entities/cyberplague.jpg",
     summary: "Н неконтролируемая катастрофическая сущность, уничтожившая регион.",
     notes: "Не относится напрямую к основной ветке инквизиторов.",
-    dossier: "#",
     x: -364, y: 14,
   },
 
     {
+    id: "militech",
+    name: "Милитех",
+    role: "Корпорация",
+    tier: "external",
+    threat: "high",
+    label: "EXTERNAL",
+    type: "corp",
+    layoutGroup: "external",
+    image: "assets/images/ally/militech.jpg",
+    summary: "Militech International Armaments — одна из крупнейших военных мегакорпораций мира, специализирующаяся на разработке и производстве вооружения, военной техники и систем безопасности.",
+    notes: "По имеющимся данным, лидер инквизиторов Отец Григорий ранее служил офицером Militech, что может объяснять наличие доступа к корпоративным ресурсам и технике.",
+    dossier: "#",
+  },
+    
+    {
+    id: "mthdepot",
+    name: "Поставки Милитеха",
+    role: "Ресурсы",
+    tier: "external",
+    threat: "vector",
+    label: "EXTERNAL",
+    type: "resource",
+    layoutGroup: "external",
+    image: "",
+    summary: "Объект представляет собой складской комплекс, используемый Инквизиторами для хранения и распределения вооружения, техники и военных ресурсов Militech.",
+    notes: "Во время инцидента объект находился под усиленной охраной: подразделения Militech, бойцы банды Maelstrom, элементы структуры инквизиторов Присутствие Maelstrom сопровождалось признаками возможного внешнего контроля, что указывает на вероятное вмешательство со стороны инквизиторов.",
+    dossier: "#",
+  },
+
+    {
     id: "mexican",
-    name: "Банда Мексиканцев",
-    role: "Аномалия",
+    name: "Картель",
+    role: "Банда",
     tier: "external",
     threat: "vector",
     label: "EXTERNAL",
     type: "group",
     layoutGroup: "linked",
     image: "assets/images/ally/cartel.jpg",
-    summary: "111",
-    notes: "Не относится напрямую к основной ветке инквизиторов.",
-    dossier: "#",
+    summary: "Подразделение мексиканского картеля было замечено в пустошах в составе вооружённой группы, участвовавшей в удержании захваченных членов команды.",
+    notes: "Участие картеля в более широкой структуре операций пока не подтверждено. Вероятнее всего выступают в качестве наёмного ресурса, задействованного через фиксера.",
     x: 1600, y: -53,
   }
 
@@ -214,8 +242,10 @@ const BLACKFILES_DATA = {
   { from: "father-grigory", to: "kuklovod" },
   { from: "father-grigory", to: "alma" },
   { from: "father-grigory", to: "morfey" },
+  { from: "father-grigory", to: "militech" },
   { from: "nexus", to: "cyberplague" },
   { from: "mexican", to: "1848" },
+  { from: "militech", to: "mthdepot" },
 ]
   
 };
