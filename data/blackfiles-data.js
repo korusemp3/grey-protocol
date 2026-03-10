@@ -234,7 +234,7 @@ const BLACKFILES_DATA = {
     summary: "Одна из крупнейших мегакорпораций мира, обладающая собственной армией и разведывательными структурами.",
     notes: "Во время одной операции агенты Arasaka действовали под видом инквизиторов. Это привело к столкновению с настоящими инквизиторами, которые уничтожили их. Возможна скрытая операция или попытка разведки. Пометка: Потенциальный контакт или временный союзник.",
     dossier: "#",
-   x: 286, y: 1538,
+   x: 258, y: 1548,
   },
     
   {
@@ -534,6 +534,8 @@ const BLACKFILES_DATA = {
   links: [
   { from: "father-grigory", to: "ajax", relation: "direct"},
   { from: "father-grigory", to: "asgard", relation: "direct" },
+  { from: "asgard", to: "asgardbots", relation: "link" },
+  { from: "asgard", to: "nomads", relation: "unknown" },
   { from: "father-grigory", to: "harlequin", relation: "direct"},
   { from: "harlequin", to: "arlekassa", relation: "link"},
   { from: "father-grigory", to: "yuri", relation: "direct"},
@@ -546,6 +548,10 @@ const BLACKFILES_DATA = {
   { from: "father-grigory", to: "morfey", relation: "direct" },
   { from: "morfey", to: "Nleak", relation: "unknown" },
   { from: "morfey", to: "leaknews", relation: "unknown" },
+  { from: "morfey", to: "narclabs", relation: "link" },
+  { from: "morfey", to: "narclabs", relation: "coop" },
+  { from: "narclabs", to: "braztrav", relation: "unknown" },
+  { from: "braztrav", to: "ajax", relation: "link" },
   { from: "father-grigory", to: "militech", relation: "coop" },
   { from: "father-grigory", to: "betasis", relation: "link"},
   { from: "nexus", to: "cyberplague", relation: "unknown" },
@@ -556,6 +562,7 @@ const BLACKFILES_DATA = {
   { from: "alma", to: "arasaka", relation: "coop" },
   { from: "alma", to: "biotechnica", relation: "coop" },
   { from: "nightcorp", to: "tunnels", relation: "unknown" },
+  { from: "unksniper", to: "burya", relation: "unknown" },
 ]
   
 };
