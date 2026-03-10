@@ -540,7 +540,7 @@ const BLACKFILES_DATA = {
   { from: "father-grigory", to: "1848", relation: "direct"},
   { from: "father-grigory", to: "nexus", relation: "direct"},
   { from: "father-grigory", to: "kuklovod", relation: "direct" },
-  { from: "kuklovod", to: "mlstrm", relation: "unknown" },
+  { from: "kuklovod", to: "mlstrem", relation: "unknown" },
   { from: "kuklovod", to: "uknmercs", relation: "unknown" },
   { from: "father-grigory", to: "alma", relation: "direct" },
   { from: "father-grigory", to: "morfey", relation: "direct" },
