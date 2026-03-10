@@ -197,13 +197,13 @@
     const cy = cytoscape({
       container: graphEl,
       elements,
-      minZoom: 0.7,
-      maxZoom: 1.6,
-      wheelSensitivity: 0.18,
+      minZoom: 0.5,
+      maxZoom: 2.2,
+      wheelSensitivity: 0.14,
       layout: {
   name: "preset",
   fit: true,
-  padding: 80,
+  padding: 120,
   animate: false
 },
       style: [
