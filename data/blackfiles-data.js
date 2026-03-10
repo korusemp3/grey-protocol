@@ -173,7 +173,8 @@ const BLACKFILES_DATA = {
     image: "assets/images/entities/cyberplague.jpg",
     summary: "Н неконтролируемая катастрофическая сущность, уничтожившая регион.",
     notes: "Не относится напрямую к основной ветке инквизиторов.",
-    dossier: "#"
+    dossier: "#",
+    x: 1220, y: 30,
   },
 
     {
