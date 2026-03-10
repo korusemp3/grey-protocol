@@ -201,8 +201,8 @@
     const cy = cytoscape({
       container: graphEl,
       elements,
-      minZoom: 0.5,
-      maxZoom: 2.2,
+      minZoom: 0.55,
+      maxZoom: 2.7,
       wheelSensitivity: 0.14,
       layout: {
   name: "preset",
