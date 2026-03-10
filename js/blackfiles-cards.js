@@ -107,15 +107,58 @@
     }
 
     function onMouseUp() {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
+  document.removeEventListener("mousemove", onMouseMove);
+  document.removeEventListener("mouseup", onMouseUp);
 
-      isDragging = false;
+  isDragging = false;
 
-      if (!dragStarted) {
-        node.emit("tap");
-      }
-    }
+  if (!dragStarted) {
+    node.emit("tap");
+    return;
+  }
+
+  const finalPos = node.position();
+  const x = Math.round(finalPos.x);
+  const y = Math.round(finalPos.y);
+
+  const message = `${entity.id}: { x: ${x}, y: ${y} }`;
+
+  console.log(message);
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(message).catch(() => {});
+  }
+
+  let hud = document.getElementById("bfCoordHud");
+  if (!hud) {
+    hud = document.createElement("div");
+    hud.id = "bfCoordHud";
+    hud.style.position = "fixed";
+    hud.style.right = "18px";
+    hud.style.bottom = "18px";
+    hud.style.zIndex = "99999";
+    hud.style.padding = "10px 12px";
+    hud.style.borderRadius = "12px";
+    hud.style.background = "rgba(8,12,18,.92)";
+    hud.style.border = "1px solid rgba(255,90,124,.22)";
+    hud.style.boxShadow = "0 10px 30px rgba(0,0,0,.35)";
+    hud.style.color = "#ffd6df";
+    hud.style.fontFamily = '"JetBrains Mono", monospace';
+    hud.style.fontSize = "12px";
+    hud.style.letterSpacing = ".04em";
+    hud.style.pointerEvents = "none";
+    hud.style.whiteSpace = "pre";
+    document.body.appendChild(hud);
+  }
+
+  hud.textContent = message;
+  hud.style.opacity = "1";
+
+  clearTimeout(window.__bfCoordHudTimer);
+  window.__bfCoordHudTimer = setTimeout(() => {
+    if (hud) hud.style.opacity = "0";
+  }, 2200);
+}
 
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
