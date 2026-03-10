@@ -1,5 +1,6 @@
 const BLACKFILES_DATA = {
   entities: [
+  //inq ахуевшие  
   {
     id: "father-grigory",
     name: "Отец Григорий",
@@ -169,7 +170,8 @@ const BLACKFILES_DATA = {
     dossier: "#",
     x: 1263, y: 312,
   },
-   
+
+  //аномалии и события    
   {
     id: "cyberplague",
     name: "Киберчума",
@@ -177,19 +179,66 @@ const BLACKFILES_DATA = {
     tier: "external",
     threat: "omega",
     label: "EXTERNAL",
+    status:"активна",
     type: "anomaly",
     layoutGroup: "external",
     image: "assets/images/entities/cyberplague.jpg",
-    summary: "Н неконтролируемая катастрофическая сущность, уничтожившая регион.",
+    summary: "Неконтролируемая катастрофическая сущность, уничтожившая регион.",
     notes: "Не относится напрямую к основной ветке инквизиторов.",
     x: -364, y: 14,
   },
 
+  {
+    id: "burya",
+    name: "Песчаная буря",
+    role: "природная / неизвестная аномалия",
+    tier: "external",
+    status:"нестабильная/активна",
+    threat: "high",
+    label: "EXTERNAL",
+    type: "anomaly",
+    layoutGroup: "external",
+    image: "assets/images/entities/cyberplague.jpg",
+    summary: "Мощная песчаная буря в пустошах вблизь Найт-Сити. В ближайшее время есть вероятность распространения бури на город.",
+    notes: "Причина возникновения неизвестна. Возможна природная аномалия или побочный эффект экспериментов.",
+  },
+
+  {
+    id: "unksniper",
+    name: "Неизвестный снайпер",
+    role: "неизвестная угроза",
+    tier: "external",
+    status:"неизвестная аффиляция",
+    threat: "high",
+    label: "EXTERNAL",
+    type: "person",
+    layoutGroup: "external",
+    image: "assets/images/entities/cyberplague.jpg",
+    summary: "Снайпер, действующий в пустошах и атакующий любые цели. Своим оружием спобосен уничтожать цели уровня AV и выше.",
+    notes: "Неизвестно связан ли он с инквизиторами или бурей, но активно работает в пустошах. Может быть независимым фактором.",
+  },
     //corps
-    {
+ {
+    id: "arasaka",
+    name: "Арасака",
+    role: "Мегакорпорация",
+    tier: "external",
+    threat: "high",
+    label: "EXTERNAL",
+    status:"неопределён",
+    type: "corp",
+    layoutGroup: "external",
+    image: "assets/images/ally/militech.jpg",
+    summary: "Одна из крупнейших мегакорпораций мира, обладающая собственной армией и разведывательными структурами.",
+    notes: "Во время одной операции агенты Arasaka действовали под видом инквизиторов. Это привело к столкновению с настоящими инквизиторами, которые уничтожили их. Возможна скрытая операция или попытка разведки. Пометка: Потенциальный контакт или временный союзник.",
+    dossier: "#",
+  },
+    
+  {
     id: "militech",
     name: "Милитех",
     role: "Мегакорпорация",
+    status:"инфильтрация",
     tier: "external",
     threat: "high",
     label: "EXTERNAL",
@@ -233,11 +282,43 @@ const BLACKFILES_DATA = {
   },
 
     //ресурсы
-    {
+  {
+    id: "narclabs",
+    name: "Лаборатории производства наркотиков",
+    role: "Ресурсы",
+    tier: "external",
+    status: "неизвестно",
+    threat: "high",
+    label: "EXTERNAL",
+    type: "resource",
+    layoutGroup: "external",
+    image: "",
+    summary: "Лаборатории создающие новые наркотические вещества, распространяемые в Найт-Сити. Вероятная связь с Морфеем",
+    notes: "отсутствуют",
+    x: -182, y: -822,
+  },
+
+  {
+    id: "braztrav",
+    name: "Лаборатории производства наркотиков",
+    role: "психоактивное вещество",
+    tier: "external",
+    status: "предположительно: эксперимент",
+    threat: "high",
+    label: "EXTERNAL",
+    type: "resource",
+    layoutGroup: "external",
+    image: "",
+    summary: "Редкое вещество, влияющее на мозговую активность.",
+    notes: "Изучалось Эллисом. Обладает эффектами, напоминающими форму контроля сознания.",
+  },
+    
+  {
     id: "mthdepot",
     name: "Поставки Милитеха",
     role: "Ресурсы",
     tier: "external",
+    status: "активные поставки",
     threat: "vector",
     label: "EXTERNAL",
     type: "resource",
@@ -280,7 +361,97 @@ const BLACKFILES_DATA = {
   },
 
     //ally
-    {
+   {
+    id: "arlekassa",
+    name: "Скрытная группа ассасинов",
+    role: "оперативная группа",
+    tier: "external",
+    status: "скрытая активность",
+    threat: "vector",
+    label: "EXTERNAL",
+    type: "group",
+    layoutGroup: "linked",
+    image: "assets/images/ally/cartel.jpg",
+    summary: "Группа людей, действующих под руководством рокербоя.",
+    notes: "Работают скрытно и эффективно отслеживают цели. Участвовали в похищении персонала бара, под руководствовм 1848. Были замечены в иных операциях инквизиции.",
+  },
+
+  {
+    id: "betasis",
+    name: "Неизвестная женщина-боец",
+    role: "элитная боевая единица",
+    tier: "external",
+    status: "неизвестная принадлежность",
+    threat: "high",
+    label: "EXTERNAL",
+    type: "person",
+    layoutGroup: "linked",
+    image: "assets/images/ally/cartel.jpg",
+    summary: "Женщина аномально высокого роста (≈2.5 м), обладающая экстремальной физической силой.",
+    notes: "Способна уничтожать тяжёлую технику вручную (AV арасаки). Была замечена во время нападения на Biotechnica.",
+  },
+    
+  {
+    id: "asgardbots",
+    name: "Роботы Асгарда",
+    role: "боевые дроны",
+    tier: "external",
+    status: "ресурс Асгарда",
+    threat: "vector",
+    label: "EXTERNAL",
+    type: "group",
+    layoutGroup: "linked",
+    image: "assets/images/ally/cartel.jpg",
+    summary: "1. Огненный «динозавр» - Тяжёлый боевой дрон с огнемётным вооружением. 2. Стелс-паук Мобильный робот скрытного действия. Назначение полностью неизвестно.",
+    notes: "Используются асгардом для ученения беспорядка и убийств люедй в пустошах.",
+  },
+
+  {
+    id: "nomads",
+    name: "Кочевники",
+    role: "возможный союз",
+    tier: "external",
+    status: "неподтверждено",
+    threat: "vector",
+    label: "EXTERNAL",
+    type: "group",
+    layoutGroup: "linked",
+    image: "assets/images/ally/cartel.jpg",
+    summary: "Асгард может иметь контакт с одной из кочевых банд в пустошах.",
+    notes: "Подтверждений нет, однако активность в пустошах указывает на возможную логистическую поддержку.",
+  },
+    
+  {
+    id: "leaknews",
+    name: "Leak News",
+    role: "медиа / анонимная сеть",
+    tier: "external",
+    status: "неопределённая аффиляция",
+    threat: "trace",
+    label: "EXTERNAL",
+    type: "group",
+    layoutGroup: "linked",
+    image: "assets/images/ally/cartel.jpg",
+    summary: "Leak News - небольшая анонимная информационная сеть, предположительно состоящая из двух операторов. Специализируется на утечках данных, публикации компромата и работе с чувствительной информацией.",
+    notes: "В прошлом Leak News сотрудничали с инквизиторами, однако текущий статус их связи неизвестен. В данный момент организация взаимодействует с Эллисом и может использоваться для публикации информации против инквизиторов.",
+  },
+  
+  {
+    id: "sisofmer",
+    name: "Сёстры Милосердия",
+    role: "гуманитарная организация",
+    tier: "external",
+    status: "прикрытие",
+    threat: "vector",
+    label: "EXTERNAL",
+    type: "group",
+    layoutGroup: "linked",
+    image: "assets/images/ally/cartel.jpg",
+    summary: "Организация, оказывающая помощь населению.",
+    notes: "Недостаток информации. Возможаная связь с инквизитором Аяксом.",
+  },
+  
+  {
     id: "mexican",
     name: "Картель",
     role: "Банда",
@@ -294,8 +465,23 @@ const BLACKFILES_DATA = {
     notes: "Участие картеля в более широкой структуре операций пока не подтверждено. Вероятнее всего выступают в качестве наёмного ресурса, задействованного через фиксера.",
     x: 1600, y: -53,
   },
+
+  {
+    id: "uknmercs",
+    name: "Неизвестные наёмники",
+    role: "боевые специалисты",
+    status: "неизвестная аффиляция/контроль",
+    tier: "external",
+    threat: "vector",
+    label: "EXTERNAL",
+    type: "group",
+    layoutGroup: "external",
+    image: "assets/images/ally/mlstrm.jpg",
+    summary: "Два крайне опасных бойца, предположительно связанные с SovOil или Maelstrom.",
+    notes: "Причины их сотрудничества с инквизиторами неизвестны. Уровень подготовки значительно превышает обычных наёмников.",
+  },
   
-    {
+  {
     id: "mlstrem",
     name: "Мальстрём",
     role: "Банда",
@@ -308,8 +494,24 @@ const BLACKFILES_DATA = {
     image: "assets/images/ally/mlstrm.jpg",
     summary: "Серьёзно пострадали в столкновениях с инквизиторами. Значительная часть членов может находиться под контролем инквизиции - вероятно через технологию «Кукловода» или наркотические вещества.",
     notes: "",
-  }
+  },
 
+//другое
+  {
+    id: "Nleak",
+    name: "Neural Leak",
+    role: "информационная платформа",
+    status: "уничтожена",
+    tier: "external",
+    threat: "trace",
+    label: "EXTERNAL",
+    type: "group",
+    layoutGroup: "external",
+    image: "assets/images/ally/mlstrm.jpg",
+    summary: "Neural Leak — персональная база данных и информационный ресурс, созданный Эллисом для сбора и анализа данных о различных структурах.",
+    notes: "Во время работы с Leak News ресурс был атакован. База данных была полностью уничтожена и скомпрометирована. Ответственность за атаку предположительно связана с деятельностью Морфея или сетевых структур инквизиторов.",
+  }
+    
 ],
   
   links: [
