@@ -790,3 +790,13 @@ a{
 .threat-dot-high{ background:#ff9c54; }
 .threat-dot-critical{ background:#ff4d6d; }
 .threat-dot-apex{ background:#c77dff; }
+
+.level{
+  font-weight:600;
+  letter-spacing:0.08em;
+}
+
+.desc{
+  opacity:0.6;
+  font-size:0.85em;
+}
