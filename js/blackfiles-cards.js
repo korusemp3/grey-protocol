@@ -145,8 +145,7 @@ card.addEventListener("contextmenu", (event) => {
   body.textContent =
     `ID: ${entity.id}\n` +
     `Name: ${entity.name}\n` +
-    `x: ${Math.round(pos.x)}\n` +
-    `y: ${Math.round(pos.y)}`;
+    `x: ${Math.round(pos.x)}\n`` y: ${Math.round(pos.y)}`;
 }
 
 function onMouseUp() {
