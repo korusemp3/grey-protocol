@@ -198,6 +198,7 @@ const BLACKFILES_DATA = {
     summary: "Militech International Armaments — одна из крупнейших военных мегакорпораций мира, специализирующаяся на разработке и производстве вооружения, военной техники и систем безопасности.",
     notes: "По имеющимся данным, лидер инквизиторов Отец Григорий ранее служил офицером Militech, что может объяснять наличие доступа к корпоративным ресурсам и технике.",
     dossier: "#",
+    x: -282, y: -398,
   },
     
     {
@@ -213,6 +214,7 @@ const BLACKFILES_DATA = {
     summary: "Объект представляет собой складской комплекс, используемый Инквизиторами для хранения и распределения вооружения, техники и военных ресурсов Militech.",
     notes: "Во время инцидента объект находился под усиленной охраной: подразделения Militech, бойцы банды Maelstrom, элементы структуры инквизиторов Присутствие Maelstrom сопровождалось признаками возможного внешнего контроля, что указывает на вероятное вмешательство со стороны инквизиторов.",
     dossier: "#",
+    x: -182, y: -822,
   },
 
     {
@@ -233,19 +235,19 @@ const BLACKFILES_DATA = {
 ],
   
   links: [
-  { from: "father-grigory", to: "ajax" },
-  { from: "father-grigory", to: "asgard" },
-  { from: "father-grigory", to: "harlequin"}, 
-  { from: "father-grigory", to: "yuri"},
-  { from: "father-grigory", to: "1848"},
-  { from: "father-grigory", to: "nexus"},
-  { from: "father-grigory", to: "kuklovod" },
-  { from: "father-grigory", to: "alma" },
-  { from: "father-grigory", to: "morfey" },
-  { from: "father-grigory", to: "militech" },
-  { from: "nexus", to: "cyberplague" },
-  { from: "mexican", to: "1848" },
-  { from: "militech", to: "mthdepot" },
+  { from: "father-grigory", to: "ajax", relation: "direct"},
+  { from: "father-grigory", to: "asgard", relation: "direct" },
+  { from: "father-grigory", to: "harlequin", relation: "direct"}, 
+  { from: "father-grigory", to: "yuri", relation: "direct"},
+  { from: "father-grigory", to: "1848", relation: "direct"},
+  { from: "father-grigory", to: "nexus", relation: "direct"},
+  { from: "father-grigory", to: "kuklovod", relation: "direct" },
+  { from: "father-grigory", to: "alma", relation: "direct" },
+  { from: "father-grigory", to: "morfey", relation: "direct" },
+  { from: "father-grigory", to: "militech", relation: "coop" },
+  { from: "nexus", to: "cyberplague", relation: "link" },
+  { from: "mexican", to: "1848", relation: "coop" },
+  { from: "militech", to: "mthdepot", relation: "coop" },
 ]
   
 };
