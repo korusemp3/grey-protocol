@@ -74,6 +74,36 @@
   let isDragging = false;
   let dragStarted = false;
 
+card.addEventListener("contextmenu", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const cy = window.blackfilesCy;
+  if (!cy) return;
+
+  const node = cy.getElementById(entity.id);
+  if (!node) return;
+
+  cy.elements().removeClass("dimmed highlighted");
+  cy.elements().addClass("dimmed");
+
+  node.removeClass("dimmed").addClass("highlighted");
+  node.connectedEdges().removeClass("dimmed").addClass("highlighted");
+  node.neighborhood().removeClass("dimmed").addClass("highlighted");
+
+  const body = document.getElementById("coordReadoutBody");
+  if (body) {
+    const pos = node.position();
+    body.textContent =
+      `ID: ${entity.id}\n` +
+      `Name: ${entity.name}\n` +
+      `x: ${Math.round(pos.x)}\n` +
+      `y: ${Math.round(pos.y)}`;
+  }
+});
+
+
+  //fix
   card.addEventListener("mousedown", (event) => {
     const cy = window.blackfilesCy;
     if (!cy) return;
@@ -231,7 +261,7 @@
     };
 
     cy.on("render position pan zoom", updateAll);
-    cy.on("tap", updateAll);
+    cy.on("tap cxttap", updateAll);
     cy.on("dragfree", "node", updateAll);
     cy.on("layoutstop", updateAll);
 
