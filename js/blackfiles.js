@@ -83,6 +83,9 @@
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    if (window.blackfilesCy) {
+    window.blackfilesCy.elements().removeClass("dimmed highlighted");
+  }
   }
 
   function updateHeaderInfo() {
@@ -256,26 +259,45 @@
       ]
     });
 
-    cy.on("tap", "node", (evt) => {
-      const node = evt.target;
-      const id = node.id();
-      const entity = entityMap.get(id);
+    function clearAnalysisState() {
+  cy.elements().removeClass("dimmed highlighted");
+}
 
-      cy.elements().removeClass("dimmed highlighted");
-      cy.elements().addClass("dimmed");
+function applyAnalysisState(node) {
+  clearAnalysisState();
+  cy.elements().addClass("dimmed");
 
-      node.removeClass("dimmed").addClass("highlighted");
-      node.connectedEdges().removeClass("dimmed").addClass("highlighted");
-      node.neighborhood().removeClass("dimmed").addClass("highlighted");
+  node.removeClass("dimmed").addClass("highlighted");
+  node.connectedEdges().removeClass("dimmed").addClass("highlighted");
+  node.neighborhood().removeClass("dimmed").addClass("highlighted");
+}
 
-      if (entity) openModal(entity);
-    });
+cy.on("tap", "node", (evt) => {
+  const node = evt.target;
+  const id = node.id();
+  const entity = entityMap.get(id);
 
-    cy.on("tap", (evt) => {
-      if (evt.target === cy) {
-        cy.elements().removeClass("dimmed highlighted");
-      }
-    });
+  clearAnalysisState();
+
+  if (entity) openModal(entity);
+});
+
+cy.on("cxttap", "node", (evt) => {
+  const node = evt.target;
+  applyAnalysisState(node);
+});
+
+cy.on("tap", (evt) => {
+  if (evt.target === cy) {
+    clearAnalysisState();
+  }
+});
+
+cy.on("cxttap", (evt) => {
+  if (evt.target === cy) {
+    clearAnalysisState();
+  }
+});
     window.blackfilesCy = cy;
 window.dispatchEvent(new CustomEvent("blackfiles:graph-ready"));
   }
