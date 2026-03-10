@@ -185,10 +185,11 @@ const BLACKFILES_DATA = {
     x: -364, y: 14,
   },
 
+    //corps
     {
     id: "militech",
     name: "Милитех",
-    role: "Корпорация",
+    role: "Мегакорпорация",
     tier: "external",
     threat: "high",
     label: "EXTERNAL",
@@ -200,7 +201,38 @@ const BLACKFILES_DATA = {
     dossier: "#",
     x: -282, y: -398,
   },
-    
+
+    {
+    id: "nightcorp",
+    name: "НайтКорп",
+    role: "Мегакорпорация",
+    status: "внешняя структура",
+    tier: "external",
+    threat: "high",
+    label: "EXTERNAL",
+    type: "corp",
+    layoutGroup: "external",
+    image: "assets/images/ally/mlstrm.jpg",
+    summary: "NightCorp - одна из крупных корпоративных структур Найт-Сити. Представители корпорации обладают прямым влиянием в городской политике и экономике.",
+    notes: "Один из корпоратов высокого ранга связан с деятельностью инквизиторов. Степень вовлечённости NightCorp неизвестна.",
+  },
+
+    {
+    id: "biotechnica",
+    name: "Биотехника",
+    role: "Мегакорпорация",
+    status: "инфильтрация",
+    tier: "external",
+    threat: "high",
+    label: "EXTERNAL",
+    type: "corp",
+    layoutGroup: "external",
+    image: "assets/images/ally/mlstrm.jpg",
+    summary: "Biotechnica - биотехнологическая корпорация, специализирующаяся на генетике, фармакологии и агро-технологиях.",
+    notes: "В Biotechnica была замечена тесная связь её представителей с инквизиторами. По текущим данным значительная часть структуры корпорации может быть инфильтрирована агентами инквизиции.",
+  },
+
+    //ресурсы
     {
     id: "mthdepot",
     name: "Поставки Милитеха",
@@ -218,6 +250,37 @@ const BLACKFILES_DATA = {
   },
 
     {
+    id: "tunnels",
+    name: "Подземные туннели",
+    role: "Инфраструктура",
+    tier: "external",
+    status: "активная сеть",
+    threat: "vector",
+    label: "EXTERNAL",
+    type: "resource",
+    layoutGroup: "external",
+    image: "",
+    summary: "Разветвлённая сеть туннелей под Найт-Сити, соединяющая городские районы с удалёнными логистическими точками.",
+    notes: "Используются инквизиторами для скрытого перемещения и логистики. Один из маршрутов ведёт в пустоши. Сеть патрулируется и активно применяется в операциях. Через неё также осуществлялось похищение Нико и Даниэля.",
+  },
+
+    {
+    id: "acpa",
+    name: "АКПА Милитеха",
+    role: "тяжёлая боевая платформа",
+    tier: "external",
+    status: "не активирован",
+    threat: "vector",
+    label: "EXTERNAL",
+    type: "resource",
+    layoutGroup: "external",
+    image: "",
+    summary: "Крупная автономная боевая машина, сопоставимая по мощности с танком.",
+    notes: "Обнаружена на складе Militech, используемом инквизиторами. Робот не был активирован, вероятно находился на стадии подготовки к использованию.",
+  },
+
+    //ally
+    {
     id: "mexican",
     name: "Картель",
     role: "Банда",
@@ -230,6 +293,21 @@ const BLACKFILES_DATA = {
     summary: "Подразделение мексиканского картеля было замечено в пустошах в составе вооружённой группы, участвовавшей в удержании захваченных членов команды.",
     notes: "Участие картеля в более широкой структуре операций пока не подтверждено. Вероятнее всего выступают в качестве наёмного ресурса, задействованного через фиксера.",
     x: 1600, y: -53,
+  },
+  
+    {
+    id: "mlstrem",
+    name: "Мальстрём",
+    role: "Банда",
+    status: "частичный контроль",
+    tier: "external",
+    threat: "vector",
+    label: "EXTERNAL",
+    type: "group",
+    layoutGroup: "external",
+    image: "assets/images/ally/mlstrm.jpg",
+    summary: "Серьёзно пострадали в столкновениях с инквизиторами. Значительная часть членов может находиться под контролем инквизиции - вероятно через технологию «Кукловода» или наркотические вещества.",
+    notes: "",
   }
 
 ],
@@ -245,9 +323,11 @@ const BLACKFILES_DATA = {
   { from: "father-grigory", to: "alma", relation: "direct" },
   { from: "father-grigory", to: "morfey", relation: "direct" },
   { from: "father-grigory", to: "militech", relation: "coop" },
-  { from: "nexus", to: "cyberplague", relation: "link" },
+  { from: "nexus", to: "cyberplague", relation: "unknown" },
   { from: "mexican", to: "1848", relation: "coop" },
   { from: "militech", to: "mthdepot", relation: "coop" },
+  { from: "alma", to: "nightcorp", relation: "coop" },
+  { from: "nightcorp", to: "tunnels", relation: "unknown" },
 ]
   
 };
