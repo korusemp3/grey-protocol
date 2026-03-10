@@ -6,6 +6,7 @@ const BLACKFILES_DATA = {
     role: "Законник / Лидер",
     tier: "top",
     status: "active",
+    label: "LIEUTENANT",
     threat: "apex",
     image: "assets/images/entities/grigory.jpg",
     summary: "Глава основной ветки Инквизиторов. Центральная фигура всей структуры.",
