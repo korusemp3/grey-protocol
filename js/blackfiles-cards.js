@@ -30,8 +30,12 @@
   return "tier-linked";
 }
 
-  function getTierLabel(tier) {
-  const normalized = (tier || "").toLowerCase();
+  function getTierLabel(entity) {
+  if (entity.label && String(entity.label).trim()) {
+    return String(entity.label).trim();
+  }
+
+  const normalized = (entity.tier || "").toLowerCase();
   if (normalized === "top") return "Top Cell";
   if (normalized === "lieutenant") return "Lieutenant";
   if (normalized === "external") return "External";
@@ -45,7 +49,7 @@
 
   const threatClass = getThreatClass(entity.threat);
   const threatLabel = (entity.threat || "low").toUpperCase();
-  const tierLabel = getTierLabel(entity.tier);
+  const tierLabel = getTierLabel(entity);
 
   const photo = entity.image
     ? `<img src="${escapeHtml(entity.image)}" alt="${escapeHtml(entity.name)}">`
