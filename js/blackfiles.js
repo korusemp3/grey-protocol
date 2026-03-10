@@ -283,43 +283,60 @@ window.dispatchEvent(new CustomEvent("blackfiles:graph-ready"));
   function getPresetPositions() {
   const positions = {};
 
-  const top = data.entities.filter((e) => e.tier === "top");
-  const lieutenants = data.entities.filter((e) => e.tier === "lieutenant");
-  const linked = data.entities.filter((e) => e.tier === "linked");
-  const external = data.entities.filter((e) => e.tier === "external");
+  const grouped = {
+    top: [],
+    lieutenants: [],
+    linked: [],
+    external: []
+  };
+
+  data.entities.forEach((entity) => {
+    // 1. если задана ручная позиция — она главная
+    if (typeof entity.x === "number" && typeof entity.y === "number") {
+      positions[entity.id] = {
+        x: entity.x,
+        y: entity.y
+      };
+      return;
+    }
+
+    // 2. иначе раскладываем по layoutGroup
+    const group = entity.layoutGroup || "linked";
+
+    if (!grouped[group]) {
+      grouped.linked.push(entity);
+      return;
+    }
+
+    if (grouped[group]) {
+      grouped[group].push(entity);
+    } else {
+      grouped.linked.push(entity);
+    }
+  });
 
   function placeRow(items, y, startX, gap) {
     items.forEach((item, index) => {
-      positions[item.id] = {
-        x: startX + index * gap,
-        y
-      };
+      if (!positions[item.id]) {
+        positions[item.id] = {
+          x: startX + index * gap,
+          y
+        };
+      }
     });
   }
 
-  // верх
-  if (top.length) {
-    top.forEach((item, index) => {
-      positions[item.id] = {
-        x: 700 + index * 220,
-        y: 180
-      };
-    });
-  }
+  // верхний ряд
+  placeRow(grouped.top, 180, 700, 220);
 
-  // второй ряд
-  placeRow(lieutenants, 520, 260, 240);
+  // лейтенанты
+  placeRow(grouped.lieutenants, 520, 260, 240);
 
-  // третий ряд
-  placeRow(linked, 860, 160, 220);
+  // связанные / ресурсы / нижний ряд
+  placeRow(grouped.linked, 860, 160, 220);
 
-  // внешние угрозы — отдельно сверху/сбоку
-  external.forEach((item, index) => {
-    positions[item.id] = {
-      x: 220 + index * 220,
-      y: 80
-    };
-  });
+  // внешние
+  placeRow(grouped.external, 80, 220, 220);
 
   return positions;
 }
