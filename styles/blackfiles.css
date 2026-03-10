@@ -679,19 +679,25 @@ a{
 }
 
 .coord-readout{
-  width:300px;
-  padding:12px 14px;
-  border:1px solid rgba(108,140,255,.14);
+  position:absolute;
+  left:24px;
+  bottom:24px;
+  z-index:40;
+  width:240px;
+  padding:10px 12px;
+  border:1px solid rgba(108,140,255,.10);
   border-radius:14px;
-  background:rgba(7,11,18,.68);
+  background:rgba(7,11,18,.50);
   backdrop-filter:blur(8px);
-  box-shadow:0 10px 30px rgba(0,0,0,.22);
+  box-shadow:0 10px 24px rgba(0,0,0,.16);
+
   color:#cfe0ff;
   font-family:"JetBrains Mono", monospace;
   font-size:11px;
-  letter-spacing:.04em;
-  line-height:1.5;
-  opacity:.78;
+  letter-spacing:.03em;
+  line-height:1.45;
+
+  opacity:.58;
   pointer-events:none;
 }
 
@@ -699,8 +705,9 @@ a{
   margin-bottom:6px;
   color:#ffb5c3;
   text-transform:uppercase;
-  letter-spacing:.16em;
+  letter-spacing:.14em;
   font-size:10px;
+  opacity:.82;
 }
 
 .coord-readout__body{
