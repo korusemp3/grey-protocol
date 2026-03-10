@@ -118,19 +118,35 @@ card.addEventListener("contextmenu", (event) => {
     const graph = document.getElementById("graph");
     const graphRect = graph.getBoundingClientRect();
 
+    //fix dragging blyat
+    const pan = cy.pan();
+const zoom = cy.zoom();
+const startX = event.clientX - graphRect.left;
+const startY = event.clientY - graphRect.top;
+const startModelX = (startX - pan.x) / zoom;
+const startModelY = (startY - pan.y) / zoom;
+const startNodePos = node.position();
+
+const dragOffsetX = startNodePos.x - startModelX;
+const dragOffsetY = startNodePos.y - startModelY;
+
     function moveAt(e) {
-      const x = e.clientX - graphRect.left;
-      const y = e.clientY - graphRect.top;
+  const x = e.clientX - graphRect.left;
+  const y = e.clientY - graphRect.top;
 
-      const pan = cy.pan();
-      const zoom = cy.zoom();
+  const pan = cy.pan();
+  const zoom = cy.zoom();
 
-      const modelX = (x - pan.x) / zoom;
-      const modelY = (y - pan.y) / zoom;
+  const modelX = (x - pan.x) / zoom;
+  const modelY = (y - pan.y) / zoom;
 
-      node.position({ x: modelX, y: modelY });
-      dragStarted = true;
-    }
+  node.position({
+    x: modelX + dragOffsetX,
+    y: modelY + dragOffsetY
+  });
+
+  dragStarted = true;
+}
 
     function onMouseMove(e) {
       if (!isDragging) return;
