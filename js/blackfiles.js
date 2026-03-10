@@ -192,6 +192,7 @@
           id: `${link.from}_${link.to}`,
           source: link.from,
           target: link.to,
+          relation: link.relation || "link",
           label: link.label || ""
         }
       });
@@ -230,6 +231,42 @@
             "target-arrow-shape": "triangle"
           }
         },
+        {
+  selector: 'edge[relation = "direct"]',
+  style: {
+    "width": 3.2,
+    "line-style": "solid",
+    "line-color": "#ff5a7c",
+    "target-arrow-color": "#ff5a7c"
+  }
+},
+{
+  selector: 'edge[relation = "link"]',
+  style: {
+    "width": 2,
+    "line-style": "solid",
+    "line-color": "rgba(255,90,124,0.55)",
+    "target-arrow-color": "rgba(255,90,124,0.75)"
+  }
+},
+{
+  selector: 'edge[relation = "coop"]',
+  style: {
+    "width": 2,
+    "line-style": "dashed",
+    "line-color": "#41d39e",
+    "target-arrow-color": "#41d39e"
+  }
+},
+{
+  selector: 'edge[relation = "unknown"]',
+  style: {
+    "width": 2,
+    "line-style": "dotted",
+    "line-color": "rgba(179,194,223,0.55)",
+    "target-arrow-color": "rgba(179,194,223,0.55)"
+  }
+},
         {
           selector: 'edge[label != ""]',
           style: {
