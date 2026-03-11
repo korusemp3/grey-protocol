@@ -286,6 +286,24 @@ const BLACKFILES_DATA = {
     x: -102, y: 1541,
   },
 
+// предметы
+
+    {
+    id: "flrec",
+    name: "Чёрный ящик Арасаки (AV)",
+    role: "Предмет",
+    status: "инфильтрация",
+    tier: "external",
+    threat: "high",
+    label: "item",
+    type: "item",
+    layoutGroup: "external",
+    image: "assets/images/items/blackbox.jpg",
+    summary: "Чёрный ящик, был подобран из подбитого AV Арасаки во время нападения на Вакако.",
+    notes: "Необходимо дальнейшее изучение.",
+    x: 286, y: 1886,
+  },
+    
     //ресурсы
   {
     id: "narclabs",
@@ -564,6 +582,7 @@ const BLACKFILES_DATA = {
   { from: "alma", to: "biotechnica", relation: "coop" },
   { from: "nightcorp", to: "tunnels", relation: "unknown" },
   { from: "unksniper", to: "burya", relation: "unknown" },
+  { from: "arasaka", to: "flrec", relation: "link" },
 ]
   
 };
