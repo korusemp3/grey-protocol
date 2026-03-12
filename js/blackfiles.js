@@ -263,7 +263,7 @@
   style: {
     "width": 2,
     "line-style": "dashed",
-    "line-dash-pattern": [1, 8],
+    "line-dash-pattern": [1, 6],
     "line-color": "rgba(179,194,223,0.55)",
     "target-arrow-color": "rgba(179,194,223,0.55)"
   }
