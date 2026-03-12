@@ -647,6 +647,45 @@
       .brand-text h1{
         font-size:22px;
       }
+
+      .preview-link{
+animation: previewLinkPulse 3.8s ease-in-out infinite;
+}
+
+.preview-node{
+animation: previewNodePulse 4s ease-in-out infinite;
+}
+
+.preview-node--blackfiles{
+animation-duration: 2.8s;
+}
+
+@keyframes previewLinkPulse{
+
+0%,100%{
+opacity:.65;
+}
+
+50%{
+opacity:1;
+}
+
+}
+
+@keyframes previewNodePulse{
+
+0%,100%{
+opacity:.85;
+filter: drop-shadow(0 0 0 rgba(255,255,255,0));
+}
+
+50%{
+opacity:1;
+filter: drop-shadow(0 0 6px rgba(120,170,255,.35));
+}
+
+}
+      
     }
   </style>
 </head>
@@ -715,21 +754,21 @@
                 </defs>
 
                 <g opacity="0.8">
-                  <line x1="100" y1="80" x2="290" y2="70" stroke="url(#lineBlue)" stroke-width="1.5" />
-                  <line x1="290" y1="70" x2="470" y2="120" stroke="url(#lineBlue)" stroke-width="1.5" />
-                  <line x1="290" y1="70" x2="240" y2="220" stroke="url(#lineBlue)" stroke-width="1.5" />
-                  <line x1="240" y1="220" x2="440" y2="255" stroke="url(#lineBlue)" stroke-width="1.5" />
-                  <line x1="100" y1="80" x2="130" y2="240" stroke="rgba(99,168,255,.35)" stroke-width="1.2" />
-                  <line x1="130" y1="240" x2="240" y2="220" stroke="rgba(99,168,255,.35)" stroke-width="1.2" />
+                  <line class="preview-link" x1="100" y1="80" x2="290" y2="70" stroke="url(#lineBlue)" stroke-width="1.5" />
+                  <line class="preview-link" x1="290" y1="70" x2="470" y2="120" stroke="url(#lineBlue)" stroke-width="1.5" />
+                  <line class="preview-link" x1="290" y1="70" x2="240" y2="220" stroke="url(#lineBlue)" stroke-width="1.5" />
+                  <line class="preview-link" x1="240" y1="220" x2="440" y2="255" stroke="url(#lineBlue)" stroke-width="1.5" />
+                  <line class="preview-link" x1="100" y1="80" x2="130" y2="240" stroke="rgba(99,168,255,.35)" stroke-width="1.2" />
+                  <line class="preview-link" x1="130" y1="240" x2="240" y2="220" stroke="rgba(99,168,255,.35)" stroke-width="1.2" />
                 </g>
 
                 <g>
-                  <circle cx="100" cy="80" r="11" fill="#63a8ff" opacity=".9"/>
-                  <circle cx="290" cy="70" r="13" fill="#d9e2ff" opacity=".92"/>
-                  <circle cx="470" cy="120" r="10" fill="#ff5a7c" opacity=".88"/>
-                  <circle cx="240" cy="220" r="11" fill="#63a8ff" opacity=".9"/>
-                  <circle cx="130" cy="240" r="9" fill="#9db8ff" opacity=".72"/>
-                  <circle cx="440" cy="255" r="10" fill="#ff5a7c" opacity=".82"/>
+                  <circle class="preview-node" cx="100" cy="80" r="11" fill="#63a8ff" opacity=".9"/>
+                  <circle class="preview-node" cx="290" cy="70" r="13" fill="#d9e2ff" opacity=".92"/>
+                  <circle class="preview-node" cx="470" cy="120" r="10" fill="#ff5a7c" opacity=".88"/>
+                  <circle class="preview-node" cx="240" cy="220" r="11" fill="#63a8ff" opacity=".9"/>
+                  <circle class="preview-node" cx="130" cy="240" r="9" fill="#9db8ff" opacity=".72"/>
+                  <circle class="preview-node" cx="440" cy="255" r="10" fill="#ff5a7c" opacity=".82"/>
                 </g>
 
                 <g font-family="JetBrains Mono, monospace" font-size="12" fill="#b7c7f8" opacity=".9">
