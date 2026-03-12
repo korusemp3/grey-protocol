@@ -810,6 +810,11 @@ a{
   linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
   linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
 
-  background-size: 120px 120px;
+  background-size: 70px 70px;
+
+  background-position:
+    var(--grid-x,0px) var(--grid-y,0px),
+    var(--grid-x,0px) var(--grid-y,0px);
+
   pointer-events:none;
 }
