@@ -169,26 +169,66 @@ a{
 }
 
 .eyebrow{
+  position: relative;
   display:inline-flex;
   align-items:center;
   gap:10px;
   padding:8px 12px;
-  border:1px solid rgba(255,90,124,.18);
+  border:1px solid rgba(65,211,158,.18);
   border-radius:999px;
-  background:rgba(255,90,124,.05);
-  color:#ffb0c0;
+  background:rgba(65,211,158,.04);
+  color:#d7f7ea;
   font-size:11px;
   letter-spacing:.16em;
   text-transform:uppercase;
   font-family:"JetBrains Mono", monospace;
   margin-bottom:18px;
+  box-shadow:0 0 18px rgba(65,211,158,.06);
+  overflow:hidden;
 }
 
 .eyebrow-dot{
-  width:7px;
-  height:7px;
+  width:8px;
+  height:8px;
   border-radius:50%;
-  background:var(--red);
+  background:#41d39e;
+  box-shadow:0 0 10px rgba(65,211,158,.5);
+  animation:relayPulse 1.6s ease-in-out infinite;
+}
+
+.eyebrow::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(65,211,158,.18),
+    transparent
+  );
+  transform:translateX(-120%);
+  animation:relayScan 5.5s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes relayPulse{
+  0%,100%{
+    transform:scale(1);
+    opacity:.8;
+    box-shadow:0 0 8px rgba(65,211,158,.35);
+  }
+  50%{
+    transform:scale(1.28);
+    opacity:1;
+    box-shadow:0 0 16px rgba(65,211,158,.8);
+  }
+}
+
+@keyframes relayScan{
+  to{
+    transform:translateX(120%);
+  }
 }
 
 .hero h2{
