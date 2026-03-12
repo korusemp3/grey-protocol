@@ -800,3 +800,16 @@ a{
   opacity:0.6;
   font-size:0.85em;
 }
+
+.board::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+  background-size: 120px 120px;
+  pointer-events:none;
+}
