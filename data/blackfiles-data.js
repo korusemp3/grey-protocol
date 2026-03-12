@@ -14,7 +14,7 @@ const BLACKFILES_DATA = {
     image: "assets/images/entities/grigory.jpg",
     summary: "Глава основной ветки Инквизиторов. Центральная фигура всей структуры.",
     notes: "От него расходятся все лейтенанты.",
-    dossier: "#",
+    dossier: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     x: 636, y: 118,
   },
 
