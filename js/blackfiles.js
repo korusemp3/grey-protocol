@@ -262,7 +262,8 @@
   selector: 'edge[relation = "unknown"]',
   style: {
     "width": 2,
-    "line-style": "dotted",
+    "line-style": "dashed",
+    "line-dash-pattern": [1, 12],
     "line-color": "rgba(179,194,223,0.55)",
     "target-arrow-color": "rgba(179,194,223,0.55)"
   }
@@ -296,6 +297,22 @@
       ]
     });
 
+   const board = document.querySelector(".board");
+
+function updateGrid() {
+  const pan = cy.pan();
+  const zoom = cy.zoom();
+
+  const x = pan.x * zoom;
+  const y = pan.y * zoom;
+
+  board.style.setProperty("--grid-x", `${x}px`);
+  board.style.setProperty("--grid-y", `${y}px`);
+}
+
+cy.on("pan zoom", updateGrid);
+updateGrid();
+    
     function clearAnalysisState() {
   cy.elements().removeClass("dimmed highlighted");
 }
