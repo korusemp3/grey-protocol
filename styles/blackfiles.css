@@ -858,3 +858,16 @@ a{
 
   pointer-events:none;
 }
+
+.bf-dossier-disabled {
+  background: rgba(120,120,120,0.08);
+  border: 1px solid rgba(120,120,120,0.2);
+  color: rgba(200,200,200,0.6);
+  cursor: default;
+  pointer-events: none;
+}
+
+.bf-dossier-disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
