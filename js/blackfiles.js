@@ -208,23 +208,7 @@
       });
     });
 
-    const maxY = Math.max(
-  ...data.entities.map((entity) => (entity.y || entity.position?.y || 0))
-);
-
-const graphHeight = Math.max(1000, maxY + 260);
-
-graphEl.style.height = `${graphHeight}px`;
-
-const boardEl = graphEl.closest(".board");
-if (boardEl) {
-  boardEl.style.minHeight = `${graphHeight + 120}px`;
-}
-
-const cardLayerEl = document.getElementById("cardLayer");
-if (cardLayerEl) {
-  cardLayerEl.style.height = `${graphHeight}px`;
-}
+    
     
     const cy = cytoscape({
       container: graphEl,
