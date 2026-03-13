@@ -64,12 +64,16 @@
     modalMeta.innerHTML = buildMeta(entity);
     modalSummary.innerHTML = entity.summary || "No summary available.";
     modalConnections.textContent = entity.notes || getConnectionsText(entity.id);
-    if (entity.dossier && entity.dossier !== "#") {
+   if (entity.dossier && entity.dossier !== "#") {
   modalDossierLink.setAttribute("href", entity.dossier);
-  modalDossierLink.style.display = "";
+  modalDossierLink.textContent = "ПОЛНОЕ ДОСЬЕ →";
+  modalDossierLink.classList.remove("bf-dossier-disabled");
+  modalDossierLink.style.pointerEvents = "";
+  modalDossierLink.style.opacity = "";
 } else {
   modalDossierLink.setAttribute("href", "#");
-  modalDossierLink.style.display = "none";
+  modalDossierLink.textContent = "ЧАСТИЧНЫЕ ДАННЫЕ";
+  modalDossierLink.classList.add("bf-dossier-disabled");
 }
 
     if (entity.image) {
