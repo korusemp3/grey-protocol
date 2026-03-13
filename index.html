@@ -358,6 +358,157 @@
       background:rgba(5,8,13,.62);
       backdrop-filter:blur(4px);
     }
+
+    .network-preview::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(99,168,255,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99,168,255,.06) 1px, transparent 1px);
+  background-size:28px 28px;
+  opacity:.22;
+  mask-image:radial-gradient(circle at center, black 38%, transparent 100%);
+}
+
+.network-preview::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 22% 28%, rgba(99,168,255,.14), transparent 22%),
+    radial-gradient(circle at 76% 68%, rgba(255,90,124,.10), transparent 24%);
+  opacity:.9;
+}
+
+.network-preview svg{
+  position:relative;
+  z-index:1;
+}
+
+.preview-link{
+  stroke-linecap:round;
+  stroke-dasharray:5 7;
+  animation:linkFlow 5s linear infinite;
+  opacity:.9;
+}
+
+.preview-link.soft{
+  stroke-dasharray:3 9;
+  animation-duration:7s;
+  opacity:.65;
+}
+
+.preview-node{
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:nodePulseSoft 3.2s ease-in-out infinite;
+  filter:drop-shadow(0 0 8px rgba(99,168,255,.22));
+}
+
+.preview-node.red{
+  filter:drop-shadow(0 0 10px rgba(255,90,124,.24));
+}
+
+.preview-node.white{
+  filter:drop-shadow(0 0 10px rgba(217,226,255,.18));
+}
+
+.preview-node.n2{ animation-delay:.35s; }
+.preview-node.n3{ animation-delay:.8s; }
+.preview-node.n4{ animation-delay:1.2s; }
+.preview-node.n5{ animation-delay:1.7s; }
+.preview-node.n6{ animation-delay:2.1s; }
+
+.signal-dot{
+  opacity:.95;
+  filter:drop-shadow(0 0 8px currentColor);
+}
+
+.signal-dot.blue{
+  color:#63a8ff;
+  fill:currentColor;
+}
+
+.signal-dot.red{
+  color:#ff5a7c;
+  fill:currentColor;
+}
+
+.signal-dot.s1{ animation:signal1 4.2s linear infinite; }
+.signal-dot.s2{ animation:signal2 5s linear infinite 1.2s; }
+.signal-dot.s3{ animation:signal3 4.8s linear infinite .6s; }
+.signal-dot.s4{ animation:signal4 5.8s linear infinite 1.8s; }
+
+@keyframes linkFlow{
+  from{ stroke-dashoffset:0; }
+  to{ stroke-dashoffset:-36; }
+}
+
+@keyframes nodePulseSoft{
+  0%,100%{
+    transform:scale(1);
+    opacity:.82;
+  }
+  50%{
+    transform:scale(1.12);
+    opacity:1;
+  }
+}
+
+@keyframes signal1{
+  0%{
+    transform:translate(100px,80px);
+    opacity:0;
+  }
+  8%{ opacity:1; }
+  92%{ opacity:1; }
+  100%{
+    transform:translate(290px,70px);
+    opacity:0;
+  }
+}
+
+@keyframes signal2{
+  0%{
+    transform:translate(290px,70px);
+    opacity:0;
+  }
+  8%{ opacity:1; }
+  92%{ opacity:1; }
+  100%{
+    transform:translate(470px,120px);
+    opacity:0;
+  }
+}
+
+@keyframes signal3{
+  0%{
+    transform:translate(290px,70px);
+    opacity:0;
+  }
+  8%{ opacity:1; }
+  92%{ opacity:1; }
+  100%{
+    transform:translate(240px,220px);
+    opacity:0;
+  }
+}
+
+@keyframes signal4{
+  0%{
+    transform:translate(240px,220px);
+    opacity:0;
+  }
+  8%{ opacity:1; }
+  92%{ opacity:1; }
+  100%{
+    transform:translate(440px,255px);
+    opacity:0;
+  }
+}
     
     .module-grid{
       display:grid;
@@ -647,9 +798,6 @@
       .brand-text h1{
         font-size:22px;
       }
-
-}
-   } 
     }
   </style>
 </head>
@@ -709,44 +857,51 @@
             <div class="block-title">network preview</div>
 
             <div class="network-preview">
-              <svg viewBox="0 0 600 320" preserveAspectRatio="none" aria-hidden="true">
-                <defs>
-                  <linearGradient id="lineBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="rgba(99,168,255,.9)" />
-                    <stop offset="100%" stop-color="rgba(255,90,124,.55)" />
-                  </linearGradient>
-                </defs>
+  <svg viewBox="0 0 600 320" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="lineBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#63a8ff" />
+        <stop offset="100%" stop-color="#ff5a7c" />
+      </linearGradient>
+    </defs>
 
-                <g opacity="0.8">
-                  <line class="preview-link" x1="100" y1="80" x2="290" y2="70" stroke="url(#lineBlue)" stroke-width="1.5" />
-                  <line class="preview-link" x1="290" y1="70" x2="470" y2="120" stroke="url(#lineBlue)" stroke-width="1.5" />
-                  <line class="preview-link" x1="290" y1="70" x2="240" y2="220" stroke="url(#lineBlue)" stroke-width="1.5" />
-                  <line class="preview-link" x1="240" y1="220" x2="440" y2="255" stroke="url(#lineBlue)" stroke-width="1.5" />
-                  <line class="preview-link" x1="100" y1="80" x2="130" y2="240" stroke="rgba(99,168,255,.35)" stroke-width="1.2" />
-                  <line class="preview-link" x1="130" y1="240" x2="240" y2="220" stroke="rgba(99,168,255,.35)" stroke-width="1.2" />
-                </g>
+    <g opacity="0.86">
+      <line class="preview-link" x1="100" y1="80" x2="290" y2="70" stroke="url(#lineBlue)" stroke-width="1.5" />
+      <line class="preview-link" x1="290" y1="70" x2="470" y2="120" stroke="url(#lineBlue)" stroke-width="1.5" />
+      <line class="preview-link" x1="290" y1="70" x2="240" y2="220" stroke="url(#lineBlue)" stroke-width="1.5" />
+      <line class="preview-link" x1="240" y1="220" x2="440" y2="255" stroke="url(#lineBlue)" stroke-width="1.5" />
+      <line class="preview-link soft" x1="100" y1="80" x2="130" y2="240" stroke="rgba(99,168,255,.35)" stroke-width="1.2" />
+      <line class="preview-link soft" x1="130" y1="240" x2="240" y2="220" stroke="rgba(99,168,255,.35)" stroke-width="1.2" />
+    </g>
 
-                <g>
-                  <circle class="preview-node" cx="100" cy="80" r="11" fill="#63a8ff" opacity=".9"/>
-                  <circle class="preview-node" cx="290" cy="70" r="13" fill="#d9e2ff" opacity=".92"/>
-                  <circle class="preview-node" cx="470" cy="120" r="10" fill="#ff5a7c" opacity=".88"/>
-                  <circle class="preview-node" cx="240" cy="220" r="11" fill="#63a8ff" opacity=".9"/>
-                  <circle class="preview-node" cx="130" cy="240" r="9" fill="#9db8ff" opacity=".72"/>
-                  <circle class="preview-node" cx="440" cy="255" r="10" fill="#ff5a7c" opacity=".82"/>
-                </g>
+    <g>
+      <circle class="preview-node n1" cx="100" cy="80" r="11" fill="#63a8ff" opacity=".9"/>
+      <circle class="preview-node white n2" cx="290" cy="70" r="13" fill="#d9e2ff" opacity=".92"/>
+      <circle class="preview-node red n3" cx="470" cy="120" r="10" fill="#ff5a7c" opacity=".88"/>
+      <circle class="preview-node n4" cx="240" cy="220" r="11" fill="#63a8ff" opacity=".9"/>
+      <circle class="preview-node n5" cx="130" cy="240" r="9" fill="#9db8ff" opacity=".72"/>
+      <circle class="preview-node red n6" cx="440" cy="255" r="10" fill="#ff5a7c" opacity=".82"/>
+    </g>
 
-                <g font-family="JetBrains Mono, monospace" font-size="12" fill="#b7c7f8" opacity=".9">
-                  <text x="118" y="76">NeuralLeak</text>
-                  <text x="310" y="65">Grey Protocol</text>
-                  <text x="487" y="116">Blackfiles</text>
-                  <text x="258" y="242">Entity Files</text>
-                  <text x="88" y="262">Trace</text>
-                  <text x="457" y="277">Target</text>
-                </g>
-              </svg>
+    <g>
+      <circle class="signal-dot blue s1" r="3.2" />
+      <circle class="signal-dot red s2" r="3.2" />
+      <circle class="signal-dot blue s3" r="3.2" />
+      <circle class="signal-dot red s4" r="3.2" />
+    </g>
 
-              <div class="preview-label">linked archive topology</div>
-            </div>
+    <g font-family="JetBrains Mono, monospace" font-size="12" fill="#b7c7f8" opacity=".9">
+      <text x="118" y="76">NeuralLeak</text>
+      <text x="310" y="65">Grey Protocol</text>
+      <text x="487" y="116">Blackfiles</text>
+      <text x="258" y="242">Entity Files</text>
+      <text x="88" y="262">Trace</text>
+      <text x="457" y="277">Target</text>
+    </g>
+  </svg>
+
+  <div class="preview-label">linked archive topology</div>
+</div>
           </aside>
         </section>
 
