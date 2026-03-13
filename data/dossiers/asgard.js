@@ -1,4 +1,4 @@
-const DOSSIER_DATA = {
+window.DOSSIER_DATA = {
   id: "asgard",
   title: "Асгард",
   role: "Кочевник",
