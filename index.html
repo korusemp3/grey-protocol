@@ -376,13 +376,23 @@
 .network-preview::after{
   content:"";
   position:absolute;
-  inset:0;
+  inset:-40%;
   pointer-events:none;
   z-index:0;
-  background:
-    radial-gradient(circle at 22% 28%, rgba(99,168,255,.12), transparent 24%),
-    radial-gradient(circle at 76% 68%, rgba(255,90,124,.09), transparent 26%);
-  opacity:.75;
+
+  background:linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(99,168,255,.10) 48%,
+    rgba(99,168,255,.22) 50%,
+    rgba(99,168,255,.10) 52%,
+    transparent 60%,
+    transparent 100%
+  );
+
+  transform:translateX(-60%);
+  animation:networkSweep 12s linear infinite;
 }
 
 .network-preview svg{
@@ -444,6 +454,15 @@
 .signal-dot.s3{ animation:signal3 4.8s linear infinite .6s; }
 .signal-dot.s4{ animation:signal4 5.8s linear infinite 1.8s; }
 
+@keyframes networkSweep{
+  from{
+    transform:translateX(-60%);
+  }
+  to{
+    transform:translateX(60%);
+  }
+}
+    
 @keyframes linkFlow{
   from{ stroke-dashoffset:0; }
   to{ stroke-dashoffset:-36; }
