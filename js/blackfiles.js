@@ -64,7 +64,13 @@
     modalMeta.innerHTML = buildMeta(entity);
     modalSummary.innerHTML = entity.summary || "No summary available.";
     modalConnections.textContent = entity.notes || getConnectionsText(entity.id);
-    modalDossierLink.setAttribute("href", entity.dossier || "#");
+    if (entity.dossier && entity.dossier !== "#") {
+  modalDossierLink.setAttribute("href", entity.dossier);
+  modalDossierLink.style.display = "";
+} else {
+  modalDossierLink.setAttribute("href", "#");
+  modalDossierLink.style.display = "none";
+}
 
     if (entity.image) {
       modalPhoto.innerHTML = `<img src="${escapeHtml(entity.image)}" alt="${escapeHtml(entity.name)}">`;
