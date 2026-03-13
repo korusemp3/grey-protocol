@@ -698,9 +698,126 @@ filter: drop-shadow(0 0 0 rgba(255,255,255,0));
 opacity:1;
 filter: drop-shadow(0 0 6px rgba(120,170,255,.35));
 }
-      
+
+.network-preview{
+position:relative;
+}
+
+.data-flow{
+position:absolute;
+inset:0;
+pointer-events:none;
+}
+
+.packet{
+position:absolute;
+width:4px;
+height:4px;
+border-radius:50%;
+background:#7aa2ff;
+box-shadow:0 0 6px rgba(120,170,255,.8);
+opacity:0;
+}
+
     }
-      
+
+.p1{
+top:45%;
+left:50%;
+animation:dataFlow1 4s linear infinite;
+}
+
+@keyframes dataFlow1{
+
+0%{
+transform:translate(0,0);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translate(-120px,-60px);
+opacity:0;
+}
+
+}
+
+    .p2{
+top:45%;
+left:50%;
+animation:dataFlow2 5s linear infinite;
+}
+
+@keyframes dataFlow2{
+
+0%{
+transform:translate(0,0);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translate(-120px,80px);
+opacity:0;
+}
+
+}
+
+    .p3{
+top:45%;
+left:50%;
+background:#ff5a7c;
+animation:dataFlow3 3.5s linear infinite;
+}
+
+@keyframes dataFlow3{
+
+0%{
+transform:translate(0,0);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translate(140px,40px);
+opacity:0;
+}
+
+}
+
+    .p4{
+top:20%;
+left:25%;
+animation:dataFlow4 6s linear infinite;
+}
+
+@keyframes dataFlow4{
+
+0%{
+transform:translate(0,0);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translate(0,120px);
+opacity:0;
+}
+
+}
+    
     }
   </style>
 </head>
@@ -768,6 +885,14 @@ filter: drop-shadow(0 0 6px rgba(120,170,255,.35));
                   </linearGradient>
                 </defs>
 
+<div class="data-flow">
+
+<span class="packet p1"></span>
+<span class="packet p2"></span>
+<span class="packet p3"></span>
+<span class="packet p4"></span>
+
+</div>
                 <g opacity="0.8">
                   <line class="preview-link" x1="100" y1="80" x2="290" y2="70" stroke="url(#lineBlue)" stroke-width="1.5" />
                   <line class="preview-link" x1="290" y1="70" x2="470" y2="120" stroke="url(#lineBlue)" stroke-width="1.5" />
