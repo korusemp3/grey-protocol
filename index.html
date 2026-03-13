@@ -345,6 +345,7 @@
 
     .preview-label{
       position:absolute;
+      z-index:2;
       left:14px;
       bottom:12px;
       font-family:"JetBrains Mono", monospace;
@@ -364,12 +365,12 @@
   position:absolute;
   inset:0;
   pointer-events:none;
+  z-index:0;
   background:
-    linear-gradient(rgba(99,168,255,.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99,168,255,.06) 1px, transparent 1px);
-  background-size:28px 28px;
-  opacity:.22;
-  mask-image:radial-gradient(circle at center, black 38%, transparent 100%);
+    linear-gradient(rgba(99,168,255,.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99,168,255,.10) 1px, transparent 1px);
+  background-size:32px 32px;
+  opacity:.34;
 }
 
 .network-preview::after{
@@ -377,10 +378,11 @@
   position:absolute;
   inset:0;
   pointer-events:none;
+  z-index:0;
   background:
-    radial-gradient(circle at 22% 28%, rgba(99,168,255,.14), transparent 22%),
-    radial-gradient(circle at 76% 68%, rgba(255,90,124,.10), transparent 24%);
-  opacity:.9;
+    radial-gradient(circle at 22% 28%, rgba(99,168,255,.12), transparent 24%),
+    radial-gradient(circle at 76% 68%, rgba(255,90,124,.09), transparent 26%);
+  opacity:.75;
 }
 
 .network-preview svg{
