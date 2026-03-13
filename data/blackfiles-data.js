@@ -294,7 +294,7 @@ const BLACKFILES_DATA = {
     role: "Предмет",
     status: "инфильтрация",
     tier: "external",
-    threat: "high",
+    threat: "trace",
     label: "item",
     type: "item",
     layoutGroup: "external",
