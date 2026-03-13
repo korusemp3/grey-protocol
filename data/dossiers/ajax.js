@@ -1,4 +1,4 @@
-const DOSSIER_DATA = {
+window.DOSSIER_DATA = {
   id: "ajax",
   title: "Аякс",
   role: "лейтенант Инквизиторов / медтех",
